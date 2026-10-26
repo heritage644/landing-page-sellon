@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CSSProperties } from "react";
 import {
   ArrowRight,
@@ -14,12 +15,10 @@ import {
   ShieldCheck,
   ShoppingBag,
   Sparkle,
-  Star,
   Storefront,
   TShirt,
   TrendUp,
 } from "@phosphor-icons/react/ssr";
-import HeroAtmosphere from "@/components/hero-atmosphere";
 import InteractiveShowcase from "@/components/interactive-showcase";
 import { TaglineReveal } from "@/components/landing-motion";
 import SiteFooter from "@/components/site-footer";
@@ -137,19 +136,20 @@ export default function Home() {
 
       <main id="main">
         <section className="hero-section" id="top" aria-labelledby="hero-title">
-          <HeroAtmosphere />
+          <div className="hero-glow hero-glow-one" aria-hidden="true" />
+          <div className="hero-glow hero-glow-two" aria-hidden="true" />
           <div className="hero-inner page-container">
             <div className="hero-copy">
               <p className="hero-kicker">
                 <span className="hero-kicker-icon" aria-hidden="true"><Sparkle size={15} weight="fill" /></span>
-                A brighter way to sell online
+                Built for independent sellers
               </p>
               <h1 className="hero-title" id="hero-title">
-                <span className="hero-title-line">They’re waiting</span>
-                <span className="hero-title-line">for your store.</span>
+                <span className="hero-title-line">Your products deserve</span>
+                <span className="hero-title-line">a store of their own.</span>
               </h1>
               <p className="hero-subtitle">
-                Bring your products, your brand, and your orders together in one simple storefront made to help your business grow.
+                Set up a polished storefront, add your products, and manage incoming orders from one simple place.
               </p>
               <div className="hero-actions">
                 <a className="button button-primary" href="#get-started">
@@ -161,15 +161,21 @@ export default function Home() {
                   <ArrowRight size={17} weight="regular" aria-hidden="true" />
                 </a>
               </div>
-              <div className="hero-proof" role="group" aria-label="Rated 4.7 out of 5 by more than 2,300 merchants">
-                <span className="hero-rating-stars" aria-hidden="true">
-                  {Array.from({ length: 5 }, (_, index) => <Star key={index} size={16} weight="fill" />)}
-                </span>
-                <strong className="hero-rating-score">4.7</strong>
-                <span className="hero-proof-divider" aria-hidden="true" />
-                <span className="hero-proof-copy"><strong>2,300+ merchants</strong><span>rate Sellonit</span></span>
+              <div className="hero-reassurance">
+                <span className="reassurance-item"><CheckCircle size={17} weight="fill" aria-hidden="true" /> Free to start</span>
+                <span className="reassurance-divider" aria-hidden="true" />
+                <span className="reassurance-item"><CheckCircle size={17} weight="fill" aria-hidden="true" /> No card needed</span>
               </div>
             </div>
+
+            <div className="hero-visual">
+              <HeroStorePreview />
+            </div>
+          </div>
+          <div className="hero-footer-note page-container" aria-hidden="true">
+            <span className="hero-note-line" />
+            <span>YOUR NEXT CHAPTER STARTS HERE</span>
+            <span className="hero-note-line" />
           </div>
         </section>
 
@@ -253,8 +259,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="showcase-section section-space" id="solutions" aria-labelledby="showcase-title">
-          <div className="page-container showcase-container" id="showcase">
+        <section className="showcase-section section-space" id="showcase" aria-labelledby="showcase-title">
+          <div className="page-container showcase-container">
             <div className="showcase-intro" data-reveal>
               <p className="eyebrow"><span className="eyebrow-dot" /> TAKE A CLOSER LOOK</p>
               <h2 id="showcase-title">Your store and your work, side by side.</h2>
@@ -338,6 +344,66 @@ export default function Home() {
       <SiteFooter currentPage="home" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     </>
+  );
+}
+
+function HeroStorePreview() {
+  return (
+    <div className="hero-store-stage">
+      <div className="hero-store-backdrop" aria-hidden="true" />
+      <div className="store-preview-card">
+        <div className="store-browser-bar" aria-hidden="true">
+          <span className="browser-dot" />
+          <span className="browser-dot" />
+          <span className="browser-dot" />
+          <div className="store-address"><LockKey size={12} weight="regular" /> sample storefront preview</div>
+        </div>
+        <div className="storefront-page" data-reveal style={{ "--reveal-order": 12, "--reveal-distance": "10px" } as CSSProperties}>
+          <div className="storefront-nav">
+            <div className="sample-store-name">naya <span>studio</span></div>
+            <div className="sample-store-links"><span>Shop</span><span>Our story</span></div>
+            <span className="sample-bag-icon" aria-hidden="true"><ShoppingBag size={18} weight="regular" /></span>
+          </div>
+          <div className="hero-product-image">
+            <Image
+              src="/featured-product.jpg"
+              alt="Burnt orange leather crossbody bag in the sample Naya Studio storefront"
+              fill
+              priority
+              sizes="(max-width: 900px) 90vw, 42vw"
+              className="product-image"
+            />
+            <span className="product-image-label">Made for everyday</span>
+          </div>
+          <div className="hero-product-details">
+            <div>
+              <span className="product-kicker">THE EVERYDAY EDIT</span>
+              <h2>Everyday mini bag</h2>
+              <p>Hand finished. Made to go everywhere.</p>
+            </div>
+            <div className="product-buy-column">
+              <strong>₦28,450</strong>
+              <span className="product-buy-button">Shop now <ArrowUpRight size={14} weight="bold" /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="hero-order-card" data-reveal style={{ "--reveal-order": 13, "--reveal-distance": "10px" } as CSSProperties}>
+        <span className="order-confirm-icon"><Check size={17} weight="bold" aria-hidden="true" /></span>
+        <div className="hero-order-copy">
+          <strong>Sample order received</strong>
+          <span>Everyday mini bag · Just now</span>
+        </div>
+        <span className="hero-order-price">₦28,450</span>
+      </div>
+
+      <div className="hero-store-link-card" data-reveal style={{ "--reveal-order": 14, "--reveal-distance": "10px" } as CSSProperties}>
+        <span className="store-link-icon"><Storefront size={19} weight="regular" aria-hidden="true" /></span>
+        <div><span>Your storefront</span><strong>Ready to share</strong></div>
+        <ArrowUpRight size={17} weight="regular" aria-hidden="true" />
+      </div>
+    </div>
   );
 }
 
