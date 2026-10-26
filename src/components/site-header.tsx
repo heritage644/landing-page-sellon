@@ -17,15 +17,35 @@ type SiteHeaderProps = {
 
 const navigation = [
   { label: "Features", href: "#features" },
-  { label: "How it works", href: "#how-it-works" },
+  { label: "Solutions", href: "#solutions" },
   { label: "Pricing", href: "#pricing" },
 ];
 
 export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isHeroVisible, setIsHeroVisible] = useState(currentPage === "home");
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const homePrefix = currentPage === "home" ? "" : "/";
-  const startedHref = `${homePrefix}#get-started`;
+  const howItWorksHref = `${homePrefix}#how-it-works`;
+  const headerClassName = [
+    "site-header",
+    currentPage === "home" ? "site-header-home" : "",
+    currentPage === "home" ? (isHeroVisible ? "is-hero-visible" : "is-over-content") : "",
+  ].filter(Boolean).join(" ");
+
+  useEffect(() => {
+    if (currentPage !== "home") return;
+
+    const hero = document.getElementById("top");
+    if (!hero || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsHeroVisible(entry.isIntersecting);
+    }, { threshold: 0.12 });
+
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [currentPage]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -53,7 +73,7 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
   };
 
   return (
-    <header className="site-header">
+    <header className={headerClassName}>
       <div className="header-shell">
         <a
           className="brand-lockup"
@@ -75,8 +95,8 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           ))}
         </nav>
 
-        <a className="header-cta" href={startedHref}>
-          <span>Get started free</span>
+        <a className="header-cta" href={howItWorksHref}>
+          <span>See how it works</span>
           <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
         </a>
 
@@ -130,11 +150,11 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           ))}
           <a
             className="mobile-nav-cta"
-            href={startedHref}
+            href={howItWorksHref}
             style={{ "--menu-index": navigation.length } as CSSProperties}
             onClick={closeMenu}
           >
-            <span>Get started free</span>
+            <span>See how it works</span>
             <ArrowUpRight size={20} weight="bold" aria-hidden="true" />
           </a>
         </nav>
