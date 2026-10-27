@@ -5,6 +5,7 @@ import GlobalReachSection from "@/components/home/global-reach-section";
 import HeroEntranceMotion from "@/components/home/hero-entrance-motion";
 import HeroSection from "@/components/home/hero-section";
 import HowItWorksSection from "@/components/home/how-it-works-section";
+import OrangeSectionStackPin from "@/components/home/orange-section-stack-pin";
 import { AudienceSpotlight, EnterpriseSpotlight } from "@/components/home/audience-spotlight";
 import { WhoShouldUseSection } from "@/components/home/business-summary-sections";
 import PlatformRolesSection from "@/components/home/platform-roles-section";
@@ -29,7 +30,8 @@ export default function Home() {
         <AudienceSpotlight audience="supplier" id="for-suppliers" />
         <AudienceSpotlight audience="entrepreneur" id="for-entrepreneurs" />
         <BusinessAnalyticsSection />
-        <div className="orange-section-stack">
+        <div className="orange-section-stack" data-orange-section-stack>
+          <OrangeSectionStackPin />
           <EnterpriseSpotlight />
           <WhoShouldUseSection />
         </div>
