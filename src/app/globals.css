@@ -167,7 +167,7 @@ img {
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   background: var(--glass-surface);
-  box-shadow: 0 12px 36px rgba(168, 166, 171, 0.604);
+  box-shadow: 0 12px 36px ;
   -webkit-backdrop-filter: blur(24px) saturate(165%);
   backdrop-filter: blur(24px) saturate(165%);
 }
