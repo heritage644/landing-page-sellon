@@ -1,5 +1,4 @@
 import type { CSSProperties } from "react";
-import { Globe } from "@phosphor-icons/react/ssr";
 import GlobalReachMotion from "@/components/home/global-reach-motion";
 
 const markets = [
@@ -84,7 +83,7 @@ export default function GlobalReachSection() {
             <span >Built here.</span>
             <span> With room to grow.</span>
           </h2>
-          <p className="global-reach-descriptio text-white font-semi-bold text-[18px]">
+          <p className="global-reach-description">
             Sellonit is being built around how Nigerian businesses source products, sell, and reach customers. This map is an illustrative view of future possibilities—not a claim about currently supported markets or currencies.
           </p>
           <div className="global-pagination" aria-hidden="true">

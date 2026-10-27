@@ -50,7 +50,7 @@ export default function HowItWorksSection() {
          " data-reveal>
           <div className="pl-3 w-full text-start">
             
-            <h2 id="how-it-works-title" className=" bg-[#ff8b00] ">From supplier to customer.</h2>
+            <h2 id="how-it-works-title"><span className="heading-orange-paper">From supplier to customer.</span></h2>
           </div>
           <p>Explore the intended journey from product information to a customer-facing store. These steps describe the product direction, not live Sellonit workflows.</p>
         </div>

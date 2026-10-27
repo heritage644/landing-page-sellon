@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Check } from "@phosphor-icons/react/ssr";
+import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import BusinessAccessPreview from "@/components/business-access-preview";
 import ProductCatalogExplorer from "@/components/product-catalog-explorer";
@@ -100,11 +100,11 @@ export function AudienceSpotlight({ audience, id }: { audience: Audience; id: st
 
 export function EnterpriseSpotlight() {
   return (
-    <section className="enterprise-spotlight bg-[#ff8b00] section-space" id="for-enterprise" aria-labelledby="enterprise-spotlight-title">
+    <section className="enterprise-spotlight section-space" id="for-enterprise" aria-labelledby="enterprise-spotlight-title">
       <div className="page-container enterprise-spotlight-layout">
         <div className="enterprise-spotlight-copy" data-reveal>
-          <h2 id="" className="text-black">One business may have several sides to manage.</h2>
-          <p className="text-black">Sellonit’s enterprise direction is designed for businesses that supply retailers, sell directly to customers, or operate through multiple teams and business units.</p>
+          <h2 id="enterprise-spotlight-title">One business may have several sides to manage.</h2>
+          <p>Sellonit’s enterprise direction is designed for businesses that supply retailers, sell directly to customers, or operate through multiple teams and business units.</p>
           <p>Supplier, retail, and business-management capabilities are being developed within a shared structure, with access designed to follow each user’s role and permissions.</p>
           <Link className="button button-secondary" href="/enterprise">Explore Enterprise <ArrowRight size={16} aria-hidden="true" /></Link>
           <span className="product-roadmap-note">Plan limits, features, and pricing will be confirmed before publication.</span>

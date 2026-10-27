@@ -12,6 +12,14 @@ const geistSans = localFont({
   fallback: ["system-ui", "sans-serif"],
 });
 
+const baloo2 = localFont({
+  src: "../../node_modules/@fontsource-variable/baloo-2/files/baloo-2-latin-wght-normal.woff2",
+  variable: "--font-baloo-2",
+  weight: "400 800",
+  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
+});
+
 const siteTitle = "Sellonit | A better way for businesses to sell";
 const siteDescription = "Sellonit is being built to connect Nigerian suppliers, retailers, and businesses through a clearer commerce experience.";
 
@@ -49,7 +57,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={geistSans.variable}>
+    <html lang="en" className={`${geistSans.variable} ${baloo2.variable}`}>
       <body>
         <MotionController />
         {children}

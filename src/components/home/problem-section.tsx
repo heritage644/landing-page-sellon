@@ -1,36 +1,16 @@
-import type { CSSProperties } from "react";
-import { ArrowRight, ChatCircleDots, ClipboardText, Storefront } from "@phosphor-icons/react/ssr";
+import { ArrowRight, ChatCircleDots } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { ProductVector } from "@/components/product-vectors";
 
-const problemCards = [
-  {
-    icon: ClipboardText,
-    title: "Your products",
-    copy: "Keep product information organised so customers and retailers can find what they need.",
-  },
-  {
-    icon: Storefront,
-    title: "Your store",
-    copy: "Give customers a dedicated place to browse your products and learn about your business.",
-  },
-  {
-    icon: ChatCircleDots,
-    title: "Your business activity",
-    copy: "Bring product, order, and business information into clearer view as Sellonit’s tools become available.",
-  },
-];
-
 export default function ProblemSection() {
   return (
-    <section className=" bg-[#3FBFFF] section-space" id="the-problem" aria-labelledby="problem-title">
+    <section className="problem-section section-space" id="the-problem" aria-labelledby="problem-title">
       <div className="page-container">
         <div className="problem-intro" data-reveal>
-          <h2 id="problem-title">Running a business involves more than making sales <span className="text-orange-400">.</span></h2>
-          <p className="text-black">Many Nigerian businesses 
-            sell through WhatsApp, Instagram, referrals,
-             and physical shops. As the business grows,
-              keeping everything organised can become harder.</p>
+          <h2 id="problem-title">Running a business involves more than making sales <span className="problem-title-accent">.</span></h2>
+          <p>
+            Many Nigerian businesses sell through WhatsApp, Instagram, referrals, and physical shops. As the business grows, keeping everything organised can become harder.
+          </p>
         </div>
 
         <div className="problem-story-grid">
