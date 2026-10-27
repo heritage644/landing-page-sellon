@@ -1,22 +1,22 @@
 import {
   Coffee,
+  DeviceMobile,
   Drop,
   House,
-  Laptop,
   TShirt,
 } from "@phosphor-icons/react/ssr";
 
 const categories = [
   { label: "Fashion", icon: TShirt },
   { label: "Beauty", icon: Drop },
+  { label: "Electronics", icon: DeviceMobile },
   { label: "Home goods", icon: House },
   { label: "Food and drink", icon: Coffee },
-  { label: "Digital products", icon: Laptop },
 ];
 
 export default function TrustStrip() {
   return (
-    <section className="trust-strip page-container" aria-label="Store categories supported by Sellonit" data-reveal>
+    <section className="trust-strip page-container" aria-label="Example product categories relevant to Sellonit businesses" data-reveal>
       <div className="trust-strip-heading">
         <p className="eyebrow">MADE FOR WHAT YOU SELL</p>
         <h2>One home for your next big idea.</h2>

@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-      <SiteHeader currentPage="privacy" />
+      <SiteHeader currentPath="/privacy" />
       <main className="legal-main" id="main">
         <div className="legal-page page-container">
           <p className="eyebrow"><span className="eyebrow-dot" /> SELLONIT</p>
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
             <p className="legal-lead">This notice describes what happens when you use the Sellonit landing page preview.</p>
             <section>
               <h2>Information in this preview</h2>
-              <p>The email field on this page checks the format of an address in your browser. It does not send, collect, or store your email address. The page does not create an account or process a payment.</p>
+              <p>The contact form uses browser validation, but submitting this preview only displays a notice. It does not send, collect, or store the details you enter. This page does not create an account or process a payment.</p>
             </section>
             <section>
               <h2>Information collected by a live service</h2>
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
           </div>
         </div>
       </main>
-      <SiteFooter currentPage="privacy" />
+      <SiteFooter currentPath="/privacy" />
     </>
   );
 }

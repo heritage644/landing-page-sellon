@@ -1,131 +1,86 @@
-import type { CSSProperties } from "react";
-import {
-  ArrowUpRight,
-  ChartLineUp,
-  Check,
-  CheckCircle,
-  LockKey,
-  Package,
-  ShieldCheck,
-  ShoppingBag,
-  Sparkle,
-  Storefront,
-  TrendUp,
-} from "@phosphor-icons/react/ssr";
+import { ArrowUpRight, Buildings, ChartLineUp, CreditCard, Package, Storefront, UsersThree, Warehouse } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
 
-const featureCards = [
+const capabilities = [
   {
-    title: "A storefront worth sharing",
-    description: "Give every product room to shine with a clean shop that feels like your business.",
-    icon: Storefront,
-    kind: "store",
+    id: "business-accounts",
+    title: "Business accounts and access",
+    description: "The current account experience covers registration, authentication, business setup, business types, membership, and permissions. Product tools depend on your role and release phase.",
+    icon: Buildings,
+    status: "Current account experience",
   },
   {
-    title: "A checkout that feels clear",
-    description: "Help customers move from browsing to a secure checkout without a long chain of messages.",
-    icon: ShieldCheck,
-    kind: "checkout",
-  },
-  {
-    title: "Orders in one calm place",
-    description: "See new and completed orders together, so you always know what needs your attention.",
+    id: "product-management",
+    title: "Product management",
+    description: "Organise product details and maintain catalogues for the products your business supplies or sells. Product workflows will follow the business role and rules.",
     icon: Package,
-    kind: "orders",
+    status: "In development",
   },
   {
-    title: "Know what is getting noticed",
-    description: "Follow store visits and sales, then decide what to feature next with a little more confidence.",
-    icon: ChartLineUp,
-    kind: "insights",
+    id: "supplier-retailer",
+    title: "Supplier and retailer connection",
+    description: "Connect supplier product catalogues with retailers who want to sell those products, subject to availability and each supplier’s rules.",
+    icon: UsersThree,
+    status: "Product direction",
   },
-] as const;
-
-type FeatureKind = (typeof featureCards)[number]["kind"];
+  {
+    id: "storefronts",
+    title: "Online storefronts",
+    description: "Give eligible businesses a dedicated online place to present products and share a consistent experience with customers.",
+    icon: Storefront,
+    status: "In development",
+  },
+  {
+    id: "orders",
+    title: "Orders and payments",
+    description: "The wider product plan includes online checkout, payment integrations, order management, and transaction workflows. Available methods depend on releases.",
+    icon: CreditCard,
+    status: "Planned capabilities",
+  },
+  {
+    id: "business-analytics",
+    title: "Business analytics",
+    description: "Review available sales, product, and order information through analytics designed around your business type and available data.",
+    icon: ChartLineUp,
+    status: "In development",
+  },
+  {
+    id: "fulfilment",
+    title: "Fulfilment and settlement",
+    description: "The wider roadmap includes coordinating fulfilment and supplier, retailer, and payment settlement responsibilities as operational rules and integrations are defined.",
+    icon: Warehouse,
+    status: "Future direction",
+  },
+];
 
 export default function FeaturesSection() {
   return (
-    <section className="features-section section-space" id="features" aria-labelledby="features-title">
-      <div className="page-container">
-        <div className="section-heading" data-reveal>
-          <p className="eyebrow"><span className="eyebrow-dot" /> THE SELLONIT TOOLKIT</p>
-          <h2 id="features-title">Everything your store needs to feel ready.</h2>
-          <p>Spend less time stitching tools together and more time looking after your products and customers.</p>
+    <>
+      <section className="features-page-hero" aria-labelledby="features-page-title">
+        <div className="page-container features-page-hero-content">
+          <p className="eyebrow"><span className="eyebrow-dot" /> THE SELLONIT PLATFORM</p>
+          <h1 id="features-page-title">The tools behind your selling process.</h1>
+          <p>From product catalogues to online storefronts and business analytics, Sellonit is being built to support the different activities involved in selling online.</p>
+          <div className="features-hero-links"><Link href="/how-it-works">See how it works <ArrowUpRight size={15} aria-hidden="true" /></Link><span>Capabilities release in phases.</span></div>
         </div>
-
-        <div className="feature-grid">
-          {featureCards.map(({ title, description, icon: Icon, kind }, index) => (
-            <article
-              className={`feature-card feature-card-${kind}`}
-              key={kind}
-              data-reveal
-              data-story
-              style={{ "--reveal-order": index } as CSSProperties}
-            >
-              <div className="feature-copy">
-                <span className="feature-icon" aria-hidden="true"><Icon size={22} weight="regular" /></span>
-                <h3>{title}</h3>
+      </section>
+      <section className="features-page-section section-space" id="features" aria-labelledby="features-grid-title">
+        <div className="page-container">
+          <div className="section-heading"><p className="eyebrow"><span className="eyebrow-dot" /> PRODUCT CAPABILITIES</p><h2 id="features-grid-title">A connected commerce workspace.</h2><p>Each feature depends on a clear business role, data rules, and the development phase in which it becomes available.</p></div>
+          <div className="features-page-grid">
+            {capabilities.map(({ id, title, description, icon: Icon, status }, index) => (
+              <article className="features-page-card" id={id} key={id}>
+                <div className="features-page-card-top"><span className="features-page-icon"><Icon size={20} aria-hidden="true" /></span><span className="features-page-index">0{index + 1}</span></div>
+                <span className="features-page-status"><i />{status}</span>
+                <h2>{title}</h2>
                 <p>{description}</p>
-              </div>
-              <FeatureVisual kind={kind} />
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FeatureVisual({ kind }: { kind: FeatureKind }) {
-  if (kind === "store") {
-    return (
-      <div className="feature-visual visual-store" aria-hidden="true">
-        <div className="visual-store-top"><span className="visual-brand-dot" /><span className="visual-line visual-line-long" /><span className="visual-line visual-line-short" /></div>
-        <div className="visual-store-content">
-          <div className="visual-store-copy"><span className="visual-line visual-line-mid" /><span className="visual-line visual-line-short" /><span className="visual-button" /></div>
-          <div className="visual-product-art"><ShoppingBag size={37} weight="light" /></div>
-        </div>
-        <div className="visual-store-foot"><span /><span /><span /></div>
-      </div>
-    );
-  }
-
-  if (kind === "checkout") {
-    return (
-      <div className="feature-visual visual-checkout" aria-hidden="true">
-        <div className="checkout-card">
-          <div className="checkout-card-heading"><span className="checkout-lock"><LockKey size={17} weight="regular" /></span><span className="visual-line visual-line-mid" /></div>
-          <div className="checkout-product-row"><span className="checkout-thumbnail"><ShoppingBag size={22} weight="light" /></span><span className="visual-line visual-line-long" /><strong>₦28,450</strong></div>
-          <div className="checkout-progress"><span /></div>
-          <div className="checkout-complete"><CheckCircle size={18} weight="fill" /><span>Order confirmed</span><span className="checkout-sparkle"><Sparkle size={15} weight="fill" /></span></div>
-        </div>
-      </div>
-    );
-  }
-
-  if (kind === "orders") {
-    return (
-      <div className="feature-visual visual-orders" aria-hidden="true">
-        <div className="visual-orders-top"><span className="visual-line visual-line-mid" /><span className="orders-filter">This week <ArrowUpRight size={13} /></span></div>
-        {["Everyday mini bag", "Market day tote", "Soft form pouch"].map((item, index) => (
-          <div className="visual-order-row" key={item}>
-            <span className={`visual-order-avatar visual-avatar-${index}`} />
-            <span className="visual-order-text"><strong>{item}</strong><span className="visual-line visual-line-short" /></span>
-            <span className="visual-order-check"><Check size={12} weight="bold" /></span>
+                <span className="features-page-arrow"><ArrowUpRight size={16} aria-hidden="true" /></span>
+              </article>
+            ))}
           </div>
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="feature-visual visual-insights" aria-hidden="true">
-      <div className="visual-insights-top"><span><strong>₦482,750</strong><small>Sample sales</small></span><span className="insights-trend"><TrendUp size={14} /> 6.4%</span></div>
-      <div className="visual-chart">
-        {[42, 67, 52, 83, 62, 100, 74].map((height, index) => (
-          <span className="visual-chart-bar" key={`${height}-${index}`} style={{ "--bar-height": `${height}%`, "--bar-index": index } as CSSProperties} />
-        ))}
-      </div>
-      <div className="visual-chart-labels"><span>Mon</span><span>Wed</span><span>Fri</span><span>Sun</span></div>
-    </div>
+          <div className="features-roadmap-callout"><span className="features-roadmap-mark">i</span><p>Feature descriptions explain Sellonit’s product direction. They should not be read as a promise that every workflow is currently available.</p><Link href="/contact">Ask a product question <ArrowUpRight size={15} aria-hidden="true" /></Link></div>
+        </div>
+      </section>
+    </>
   );
 }

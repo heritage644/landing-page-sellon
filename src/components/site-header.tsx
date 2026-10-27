@@ -2,30 +2,36 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import { ArrowUpRight, List, X } from "@phosphor-icons/react";
+import { ArrowUpRight, CaretDown, List, X } from "@phosphor-icons/react";
+import Link from "next/link";
 import SiteLogo from "@/components/site-logo";
 import { MAIN_WEBSITE_URL } from "@/lib/site-links";
 
-type CurrentPage = "home" | "privacy" | "terms" | "not-found";
-
 type SiteHeaderProps = {
-  currentPage?: CurrentPage;
+  currentPath?: string;
 };
 
 const navigation = [
-  { label: "Features", href: "#features" },
-  { label: "Global reach", href: "#global-reach" },
-  { label: "Analytics", href: "#analytics" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Home", href: "/" },
+  { label: "For Retailers", href: "/retailers" },
+  { label: "For Suppliers", href: "/suppliers" },
+  { label: "For Entrepreneurs", href: "/entrepreneurs" },
+  { label: "For Enterprise", href: "/enterprise" },
+  { label: "Analytics", href: "/analytics" },
 ];
 
-export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
+const featureLinks = [
+  { label: "Storefronts", href: "/features#storefronts", description: "A dedicated place to present products" },
+  { label: "Product Management", href: "/features#product-management", description: "Organise catalogues and product details" },
+  { label: "Orders", href: "/features#orders", description: "Explore the planned order workflows" },
+  { label: "Business Analytics", href: "/analytics", description: "Understand the product direction" },
+];
+
+export default function SiteHeader({ currentPath = "/" }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const homePrefix = currentPage === "home" ? "" : "/";
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -42,7 +48,7 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
 
     const focusableElements = () =>
       Array.from(
-        mobileMenuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [],
+        mobileMenuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), summary') ?? [],
       );
 
     const focusFrame = window.requestAnimationFrame(() => {
@@ -86,31 +92,43 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
     window.requestAnimationFrame(() => menuButtonRef.current?.focus());
   };
 
+  const closeOnNavigate = () => {
+    if (menuOpen) closeMenu();
+  };
+
   return (
-    <header className="site-header" data-hero-header={currentPage === "home" ? "" : undefined}>
+    <header className="site-header" data-hero-header={currentPath === "/" ? "" : undefined}>
       <div className="header-shell" inert={menuOpen}>
-        <a
+        <Link
           className="brand-lockup"
-          href={homePrefix || "#top"}
+          href="/"
           aria-label="Sellonit home"
-          aria-current={currentPage === "home" ? "page" : undefined}
-          data-hero-logo={currentPage === "home" ? "" : undefined}
+          aria-current={currentPath === "/" ? "page" : undefined}
+          data-hero-logo={currentPath === "/" ? "" : undefined}
         >
           <SiteLogo className="brand-logo" eager />
-        </a>
+        </Link>
 
         <nav className="desktop-nav" aria-label="Main navigation">
-          {navigation.map((item) => (
-            <a key={item.href} href={`${homePrefix}${item.href}`} data-hero-nav-item>
+          {navigation.slice(0, 5).map((item) => (
+            <Link key={item.href} href={item.href} aria-current={currentPath === item.href ? "page" : undefined} data-hero-nav-item>
               {item.label}
-            </a>
+            </Link>
           ))}
+          <details className="header-dropdown" data-hero-nav-item>
+            <summary className="header-dropdown-trigger">Features <CaretDown size={13} weight="bold" aria-hidden="true" /></summary>
+            <div className="header-dropdown-panel">
+              {featureLinks.map((item) => <Link href={item.href} key={item.label} onClick={closeOnNavigate}><strong>{item.label}</strong><small>{item.description}</small></Link>)}
+              <Link href="/features" className="header-dropdown-all" onClick={closeOnNavigate}>Explore all features <ArrowUpRight size={14} aria-hidden="true" /></Link>
+            </div>
+          </details>
+          <Link href="/analytics" aria-current={currentPath === "/analytics" ? "page" : undefined} data-hero-nav-item>Analytics</Link>
         </nav>
 
-        <a className="header-cta" href={MAIN_WEBSITE_URL} data-hero-nav-item>
-          <span>Get started free</span>
-          <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
-        </a>
+        <div className="header-actions">
+          <a className="header-login" href={MAIN_WEBSITE_URL} data-hero-nav-item>Log in</a>
+          <a className="header-cta" href={MAIN_WEBSITE_URL} data-hero-nav-item><span>Get Started</span><ArrowUpRight size={15} weight="bold" aria-hidden="true" /></a>
+        </div>
 
         <button
           ref={menuButtonRef}
@@ -137,42 +155,30 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
         inert={!menuOpen}
       >
         <div className="mobile-menu-top">
-          <a className="brand-lockup" href={homePrefix || "#top"} onClick={closeMenu} aria-label="Sellonit home">
-            <SiteLogo className="brand-logo" />
-          </a>
-          <button
-            ref={closeButtonRef}
-            className="mobile-menu-close"
-            type="button"
-            onClick={closeMenu}
-            aria-label="Close navigation menu"
-          >
+          <Link className="brand-lockup" href="/" onClick={closeMenu} aria-label="Sellonit home"><SiteLogo className="brand-logo" /></Link>
+          <button ref={closeButtonRef} className="mobile-menu-close" type="button" onClick={closeMenu} aria-label="Close navigation menu">
             <X size={24} weight="regular" aria-hidden="true" />
           </button>
         </div>
         <nav className="mobile-nav" aria-label="Mobile navigation">
-          {navigation.map((item, index) => (
-            <a
-              key={item.href}
-              href={`${homePrefix}${item.href}`}
-              style={{ "--menu-index": index } as CSSProperties}
-              onClick={closeMenu}
-            >
-              <span>{item.label}</span>
-              <ArrowUpRight size={20} weight="regular" aria-hidden="true" />
-            </a>
+          {navigation.slice(0, 5).map((item, index) => (
+            <Link key={item.href} href={item.href} style={{ "--menu-index": index } as CSSProperties} onClick={closeMenu} aria-current={currentPath === item.href ? "page" : undefined}>
+              <span>{item.label}</span><ArrowUpRight size={19} aria-hidden="true" />
+            </Link>
           ))}
-          <a
-            className="mobile-nav-cta"
-            href={MAIN_WEBSITE_URL}
-            style={{ "--menu-index": navigation.length } as CSSProperties}
-            onClick={closeMenu}
-          >
-            <span>Get started free</span>
-            <ArrowUpRight size={20} weight="bold" aria-hidden="true" />
-          </a>
+          <details className="mobile-feature-dropdown" style={{ "--menu-index": 5 } as CSSProperties}>
+            <summary><span>Features</span><CaretDown size={19} aria-hidden="true" /></summary>
+            <div className="mobile-feature-links">{featureLinks.map((item) => <Link href={item.href} key={item.label} onClick={closeMenu}>{item.label}<ArrowUpRight size={15} aria-hidden="true" /></Link>)}<Link href="/features" onClick={closeMenu}>All features<ArrowUpRight size={15} aria-hidden="true" /></Link></div>
+          </details>
+          <Link href="/analytics" style={{ "--menu-index": 6 } as CSSProperties} onClick={closeMenu} aria-current={currentPath === "/analytics" ? "page" : undefined}>
+            <span>Analytics</span><ArrowUpRight size={19} aria-hidden="true" />
+          </Link>
+          <div className="mobile-menu-actions">
+            <a className="button button-secondary" href={MAIN_WEBSITE_URL} onClick={closeMenu}>Log in <ArrowUpRight size={16} aria-hidden="true" /></a>
+            <a className="button button-primary" href={MAIN_WEBSITE_URL} onClick={closeMenu}>Get Started <ArrowUpRight size={16} aria-hidden="true" /></a>
+          </div>
         </nav>
-        <p className="mobile-menu-note">A simple home for the things you sell.</p>
+        <p className="mobile-menu-note">Built around the way Nigerian businesses sell.</p>
       </div>
     </header>
   );
