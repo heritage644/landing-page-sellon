@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { MotionController } from "@/components/landing-motion";
 import "./globals.css";
+import "./marketing.css";
 
 const geistSans = localFont({
   src: "../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
@@ -11,8 +12,8 @@ const geistSans = localFont({
   fallback: ["system-ui", "sans-serif"],
 });
 
-const siteTitle = "Sellonit | Your online store, made simple";
-const siteDescription = "Create a storefront, add your products, and manage orders in one place with Sellonit.";
+const siteTitle = "Sellonit | A better way for businesses to sell";
+const siteDescription = "Sellonit is being built to connect Nigerian suppliers, retailers, and businesses through a clearer commerce experience.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://sellonit.com"),
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image.svg",
         width: 1200,
         height: 630,
-        alt: "Sellonit helps independent sellers build a storefront and manage orders.",
+        alt: "Sellonit is building commerce tools for suppliers, retailers, and Nigerian businesses.",
       },
     ],
   },

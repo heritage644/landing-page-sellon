@@ -1,26 +1,30 @@
-import { ArrowRight, Check } from "@phosphor-icons/react/ssr";
-import InteractiveShowcase from "@/components/interactive-showcase";
-import { MAIN_WEBSITE_URL } from "@/lib/site-links";
+import { ArrowRight, LinkSimple, Package, Storefront } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
+import StorefrontBuilderPreview from "@/components/storefront-builder-preview";
+
+const storefrontPoints = [
+  { icon: Storefront, title: "A dedicated store", copy: "Present your business and products in one place." },
+  { icon: Package, title: "Organised product pages", copy: "Give customers useful product details in a clear format." },
+  { icon: LinkSimple, title: "A shareable store link", copy: "Share your storefront through the channels your customers already use." },
+];
 
 export default function ShowcaseSection() {
   return (
-    <section className="showcase-section section-space" id="showcase" aria-labelledby="showcase-title">
-      <div className="page-container showcase-container">
-        <div className="showcase-intro" data-reveal>
-          <p className="eyebrow"><span className="eyebrow-dot" /> TAKE A CLOSER LOOK</p>
-          <h2 id="showcase-title">Your store and your work, side by side.</h2>
-          <p>Switch between the customer storefront, order list, and store activity. The sample workspace shows how Sellonit keeps the day to day in view.</p>
-          <ul className="showcase-benefits">
-            <li><Check size={17} weight="bold" aria-hidden="true" /> A customer ready storefront</li>
-            <li><Check size={17} weight="bold" aria-hidden="true" /> Orders with clear next steps</li>
-            <li><Check size={17} weight="bold" aria-hidden="true" /> Useful sample sales insights</li>
+    <section className="storefront-story-section section-space" id="storefronts" aria-labelledby="storefront-story-title">
+      <div className="page-container storefront-story-layout">
+        <div className="storefront-story-copy" data-reveal>
+          <p className="eyebrow"><span className="eyebrow-dot" /> YOUR STOREFRONT</p>
+          <h2 id="storefront-story-title">Give customers somewhere to shop.</h2>
+          <p>Customers need a convenient way to discover products, understand what you’re selling, and move through the shopping experience.</p>
+          <p>Sellonit’s planned storefront tools are intended to help retailers and eligible businesses present products in an organised format. The experience can expand as the relevant shopping and checkout features become available.</p>
+          <ul className="storefront-point-list">
+            {storefrontPoints.map(({ icon: Icon, title, copy }) => <li key={title}><span><Icon size={18} aria-hidden="true" /></span><div><strong>{title}</strong><p>{copy}</p></div></li>)}
           </ul>
-          <a className="text-link" href={MAIN_WEBSITE_URL}>
-            Build your store <ArrowRight size={17} aria-hidden="true" />
-          </a>
+          <Link className="text-link" href="/features#storefronts">Explore storefront tools <ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
-        <InteractiveShowcase />
+        <div className="storefront-story-demo" data-reveal><StorefrontBuilderPreview /></div>
       </div>
+      <div className="storefront-roadmap-note page-container"><span className="product-status-dot" /> Storefront creation, customer checkout, and payment capabilities will depend on the relevant release phase.</div>
     </section>
   );
 }

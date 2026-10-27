@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-      <SiteHeader currentPage="not-found" />
+      <SiteHeader currentPath="/not-found" />
       <main className="not-found-main" id="main">
         <div className="not-found-content">
           <span className="not-found-code">404</span>
@@ -18,7 +18,7 @@ export default function NotFound() {
           </Link>
         </div>
       </main>
-      <SiteFooter currentPage="not-found" />
+      <SiteFooter currentPath="/not-found" />
     </>
   );
 }

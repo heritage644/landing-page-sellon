@@ -12,7 +12,7 @@ export default function TermsPage() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-      <SiteHeader currentPage="terms" />
+      <SiteHeader currentPath="/terms" />
       <main className="legal-main" id="main">
         <div className="legal-page page-container">
           <p className="eyebrow"><span className="eyebrow-dot" /> SELLONIT</p>
@@ -22,7 +22,7 @@ export default function TermsPage() {
             <p className="legal-lead">These starter terms describe the Sellonit landing page preview only.</p>
             <section>
               <h2>Using this preview</h2>
-              <p>This page is provided to demonstrate a possible Sellonit storefront and seller workspace. It does not create a seller account, accept an order, process a payment, or submit the email entered into the preview form.</p>
+              <p>This page is provided to demonstrate a possible Sellonit storefront and seller workspace. It does not create a seller account, accept an order, process a payment, or send details entered into the contact form preview.</p>
             </section>
             <section>
               <h2>Sample interface and figures</h2>
@@ -36,7 +36,7 @@ export default function TermsPage() {
           </div>
         </div>
       </main>
-      <SiteFooter currentPage="terms" />
+      <SiteFooter currentPath="/terms" />
     </>
   );
 }

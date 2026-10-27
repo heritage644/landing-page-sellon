@@ -82,14 +82,14 @@ export default function GlobalReachSection() {
           <p className="eyebrow global-reach-eyebrow">
             <span className="eyebrow-dot" aria-hidden="true" />
             <Globe size={15} weight="regular" aria-hidden="true" />
-            YOUR STORE HAS NO BORDERS
+            BUILT AROUND NIGERIAN COMMERCE
           </p>
           <h2 id="global-reach-title">
-            One storefront.
-            <span> A world of customers.</span>
+            Built here.
+            <span> With room to grow.</span>
           </h2>
           <p className="global-reach-description">
-            Meet customers where they are with a business that can move across markets, currencies, and time zones.
+            Sellonit is being built around how Nigerian businesses source products, sell, and reach customers. This map is an illustrative view of future possibilities—not a claim about currently supported markets or currencies.
           </p>
           <div className="global-pagination" aria-hidden="true">
             <span className="is-active" />
@@ -152,7 +152,7 @@ export default function GlobalReachSection() {
 
         <p className="global-map-note">
           <span className="global-map-note-dot" aria-hidden="true" />
-          Built to help your business reach further.
+          Illustrative markets only · availability may vary as the platform expands.
         </p>
       </div>
       <GlobalReachMotion />

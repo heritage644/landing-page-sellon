@@ -3,8 +3,13 @@ import {
   ArrowUpRight,
   CaretDown,
   ChartLineUp,
+  CheckCircle,
+  ClipboardText,
+  Package,
   TrendUp,
+  UsersThree,
 } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
 import BusinessAnalyticsMotion from "@/components/home/business-analytics-motion";
 
 const weeklySales = [
@@ -18,33 +23,18 @@ const weeklySales = [
 ];
 
 const metrics = [
-  {
-    label: "Total sales",
-    value: "₦1.24M",
-    target: "1240000",
-    prefix: "₦",
-    format: "compact",
-    suffix: "",
-    change: "+12.8%",
-  },
-  {
-    label: "Orders",
-    value: "184",
-    target: "184",
-    prefix: "",
-    format: "standard",
-    suffix: "",
-    change: "+8.2%",
-  },
-  {
-    label: "Store visits",
-    value: "42K",
-    target: "42000",
-    prefix: "",
-    format: "compact",
-    suffix: "",
-    change: "+18.4%",
-  },
+  { label: "Total sales", value: "₦1.24M", target: "1240000", prefix: "₦", format: "compact", suffix: "", change: "+12.8%" },
+  { label: "Orders", value: "184", target: "184", prefix: "", format: "standard", suffix: "", change: "+8.2%" },
+  { label: "Store visits", value: "42K", target: "42000", prefix: "", format: "compact", suffix: "", change: "+18.4%" },
+] as const;
+
+const analyticsCapabilities = [
+  { title: "Sales overview", copy: "Review available order and revenue summaries over a selected period.", icon: TrendUp },
+  { title: "Product performance", copy: "Understand which products attract sales and which may need attention.", icon: Package },
+  { title: "Order activity", copy: "Review order volumes and monitor changes in activity over time.", icon: ClipboardText },
+  { title: "Retailer performance", copy: "For suppliers, view relevant retailer activity where the data is available.", icon: UsersThree },
+  { title: "Business trends", copy: "Compare activity across periods to identify changes in sales and demand.", icon: ChartLineUp },
+  { title: "Inventory awareness", copy: "Use available stock and sales information to inform availability decisions.", icon: CheckCircle },
 ] as const;
 
 export default function BusinessAnalyticsSection() {
@@ -57,11 +47,11 @@ export default function BusinessAnalyticsSection() {
             BUSINESS ANALYTICS
           </p>
           <h2 id="analytics-title">
-            Know your numbers.
-            <span> Find your next move.</span>
+            Understand your business.
+            <span> Beyond individual sales.</span>
           </h2>
           <p>
-            Track sales, orders, and store visits in one clear view—so every decision starts with a better picture.
+            Sellonit is developing analytics to help businesses understand their sales activity, products, orders, and operations. The dashboard below uses clearly marked demonstration figures.
           </p>
         </div>
 
@@ -74,16 +64,16 @@ export default function BusinessAnalyticsSection() {
                 </span>
                 <span>
                   <strong>Sellonit insights</strong>
-                  <small>Sunday Market</small>
+                  <small>Illustrative workspace</small>
                 </span>
               </div>
-              <span className="analytics-live-label"><span /> LIVE OVERVIEW</span>
+              <span className="analytics-live-label"><span /> DEMO DATA</span>
             </div>
 
             <div className="analytics-dashboard-content">
               <div className="analytics-dashboard-heading">
                 <div>
-                  <p className="analytics-dashboard-eyebrow">YOUR BUSINESS</p>
+                  <p className="analytics-dashboard-eyebrow">ILLUSTRATIVE BUSINESS</p>
                   <h3>Performance overview</h3>
                 </div>
                 <div className="analytics-period" aria-hidden="true">
@@ -119,7 +109,7 @@ export default function BusinessAnalyticsSection() {
                   <div className="analytics-chart-heading">
                     <div>
                       <h4 id="sales-chart-title">Sales activity</h4>
-                      <p>Weekly performance</p>
+                      <p>Illustrative weekly sample</p>
                     </div>
                     <span className="analytics-chart-trend"><ArrowUpRight size={14} weight="bold" aria-hidden="true" /> +12.8%</span>
                   </div>
@@ -181,7 +171,7 @@ export default function BusinessAnalyticsSection() {
                   </div>
                 </article>
               </div>
-              <p className="analytics-sample-note">Illustrative dashboard · Sample figures</p>
+              <p className="analytics-sample-note">Demonstration figures only · Not Sellonit business data</p>
             </div>
           </div>
 
@@ -221,6 +211,19 @@ export default function BusinessAnalyticsSection() {
           </div>
         </div>
 
+        <div className="analytics-capability-grid">
+          {analyticsCapabilities.map(({ title, copy, icon: Icon }) => (
+            <article className="analytics-capability-card" key={title}>
+              <span className="analytics-capability-icon"><Icon size={18} aria-hidden="true" /></span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+        <div className="analytics-product-note">
+          <p>Metric availability will depend on business role and available data. Definitions must remain consistent: a placed order is not the same as a completed sale, and gross order value is not the same as money received after refunds, fees, and adjustments.</p>
+          <Link href="/analytics">Explore Business Analytics <ArrowUpRight size={15} aria-hidden="true" /></Link>
+        </div>
         <p className="analytics-mobile-note">Your sales and store activity, wherever you are.</p>
       </div>
       <BusinessAnalyticsMotion />
