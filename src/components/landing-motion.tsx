@@ -18,9 +18,9 @@ export function MotionController() {
 
     const animate = (target: HTMLElement, keyframes: MotionKeyframe, delay: number) => {
       const animation = target.animate(keyframes, {
-        duration: 700,
+        duration: 960,
         delay,
-        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        easing: "cubic-bezier(0.16, 1, 0.3, 1)",
         fill: "both",
       });
       activeAnimations.add(animation);
@@ -44,20 +44,27 @@ export function MotionController() {
       revealedTargets.add(target);
       const style = window.getComputedStyle(target);
       const order = Number.parseFloat(style.getPropertyValue("--reveal-order")) || 0;
-      const distance = style.getPropertyValue("--reveal-distance").trim() || "32px";
+      const distance = style.getPropertyValue("--reveal-distance").trim() || "52px";
       animate(
         target,
         [
-          { opacity: 0, transform: `translateY(${distance})` },
-          { opacity: 1, transform: "translateY(0)" },
+          { opacity: 0, transform: `translateY(${distance}) scale(0.97)`, filter: "blur(7px)" },
+          { opacity: 1, transform: "translateY(0) scale(1)", filter: "blur(0px)" },
         ],
-        order * 70,
+        order * 95,
       );
     };
 
     const revealWord = (word: HTMLElement) => {
       const index = Number.parseFloat(window.getComputedStyle(word).getPropertyValue("--word-index")) || 0;
-      animate(word, [{ opacity: 0.3 }, { opacity: 1 }], index * 35);
+      animate(
+        word,
+        [
+          { opacity: 0, transform: "translateY(14px) rotateX(-14deg)", filter: "blur(4px)" },
+          { opacity: 1, transform: "translateY(0) rotateX(0deg)", filter: "blur(0px)" },
+        ],
+        index * 50,
+      );
     };
 
     const setStoryAnimations = (target: HTMLElement, shouldPlay: boolean) => {

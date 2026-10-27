@@ -6,10 +6,9 @@ import HeroEntranceMotion from "@/components/home/hero-entrance-motion";
 import HeroSection from "@/components/home/hero-section";
 import HowItWorksSection from "@/components/home/how-it-works-section";
 import { AudienceSpotlight, EnterpriseSpotlight } from "@/components/home/audience-spotlight";
-import { BusinessManagementSection, WhoShouldUseSection } from "@/components/home/business-summary-sections";
+import { WhoShouldUseSection } from "@/components/home/business-summary-sections";
 import PlatformRolesSection from "@/components/home/platform-roles-section";
 import ProblemSection from "@/components/home/problem-section";
-import ShowcaseSection from "@/components/home/showcase-section";
 import TrustStrip from "@/components/home/trust-strip";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
@@ -32,9 +31,7 @@ export default function Home() {
         <AudienceSpotlight audience="supplier" id="for-suppliers" />
         <AudienceSpotlight audience="entrepreneur" id="for-entrepreneurs" />
         <BusinessAnalyticsSection />
-        <ShowcaseSection />
         <EnterpriseSpotlight />
-        <BusinessManagementSection />
         <WhoShouldUseSection />
         <FaqSection />
         <FinalCtaSection />

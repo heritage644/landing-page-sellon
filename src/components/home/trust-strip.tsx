@@ -9,14 +9,14 @@ import {
 const categories = [
   { label: "Fashion", icon: TShirt },
   { label: "Beauty", icon: Drop },
-  { label: "Electronics", icon: DeviceMobile },
   { label: "Home goods", icon: House },
-  { label: "Food and drink", icon: Coffee },
+  { label: "Food & drink", icon: Coffee },
+  { label: "Electronics", icon: DeviceMobile },
 ];
 
 export default function TrustStrip() {
   return (
-    <section className="trust-strip page-container" aria-label="Example product categories relevant to Sellonit businesses" data-reveal>
+    <section className="trust-strip page-container" aria-label="Example selling categories: fashion, beauty, home goods, food and drink, and electronics" data-reveal>
       <div className="trust-strip-heading">
         <p className="eyebrow">MADE FOR WHAT YOU SELL</p>
         <h2>One home for your next big idea.</h2>

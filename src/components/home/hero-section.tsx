@@ -1,9 +1,13 @@
+import { Fragment } from "react";
 import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
-import HeroWorkspacePreview from "@/components/hero-workspace-preview";
+import HeroStorefrontPreview from "@/components/hero-storefront-preview";
 import { MAIN_WEBSITE_URL } from "@/lib/site-links";
 
-const headlineLines = ["Sell more.", "Manage better.", "Grow your", "business."];
+const headlineLines = [
+  { text: "Your products deserve", tone: "orange" },
+  { text: "a store of their own.", tone: "dark" },
+] as const;
 
 export default function HeroSection() {
   return (
@@ -12,46 +16,45 @@ export default function HeroSection() {
       <div className="hero-glow hero-glow-two" aria-hidden="true" />
       <div className="hero-inner page-container">
         <div className="hero-copy">
-          <p className="hero-kicker"><span className="hero-kicker-icon" aria-hidden="true">✳</span> THE FUTURE OF SELLING IN NIGERIA</p>
+          <p className="hero-intro-label">INTRODUCING SELLONIT</p>
           <h1 className="hero-title" id="hero-title">
-            {headlineLines.map((line, lineIndex) => (
-              <span className={`hero-title-line${lineIndex >= 2 ? " is-accent" : ""}`} key={line}>
-                {line.split(" ").map((word) => (
-                  <span className="hero-word-mask" key={`${line}-${word}`}>
-                    <span className="hero-title-word" data-hero-word>{word}</span>
-                  </span>
-                ))}
-              </span>
-            ))}
+            {headlineLines.map((line) => {
+              const words = line.text.split(" ");
+              return (
+                <span className={`hero-title-line hero-title-line-${line.tone}`} key={line.text}>
+                  {words.map((word, index) => (
+                    <Fragment key={`${line.text}-${word}`}>
+                      <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>{word}</span></span>
+                      {index < words.length - 1 ? " " : null}
+                    </Fragment>
+                  ))}
+                </span>
+              );
+            })}
           </h1>
           <p className="hero-subtitle">
-            Sellonit is being built to connect suppliers, retailers, and growing businesses through one platform. Explore products, prepare a storefront, and bring order and business activity into clearer view as those tools become available.
+            Sellonit is being built to connect suppliers, retailers, and growing businesses through one platform. Product catalogues, storefronts, and business tools are developing in phases.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href={MAIN_WEBSITE_URL}>
               <span>Get Started</span><ArrowUpRight size={18} weight="bold" aria-hidden="true" />
             </a>
             <Link className="button button-secondary" href="/how-it-works">
-              <span>Explore Sellonit</span><ArrowRight size={17} weight="regular" aria-hidden="true" />
+              <span>See how it works</span><ArrowRight size={17} weight="regular" aria-hidden="true" />
             </Link>
           </div>
           <div className="hero-reassurance">
-            <span className="reassurance-item">Built for the way Nigerian businesses sell.</span>
-          </div>
-          <div className="hero-role-line" aria-label="Connecting suppliers, retailers, and customers">
-            <span>Suppliers</span><i aria-hidden="true" />
-            <span>Retailers</span><i aria-hidden="true" />
-            <span>Customers</span>
+            <span className="reassurance-item">Business account setup is available; commerce tools are releasing in phases.</span>
           </div>
         </div>
 
         <div className="hero-visual" data-hero-visual>
-          <HeroWorkspacePreview />
+          <HeroStorefrontPreview />
         </div>
       </div>
       <div className="hero-footer-note page-container" aria-hidden="true">
         <span className="hero-note-line" />
-        <span>ONE PLATFORM. EVERY PART OF SELLING.</span>
+        <span>YOUR NEXT CHAPTER STARTS HERE</span>
         <span className="hero-note-line" />
       </div>
     </section>
