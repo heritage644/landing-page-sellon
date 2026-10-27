@@ -10,31 +10,44 @@ export default function OrangeSectionStackPin() {
   useEffect(() => {
     const stack = document.querySelector<HTMLElement>("[data-orange-section-stack]");
     const panel = stack?.querySelector<HTMLElement>(".enterprise-spotlight");
-    if (!panel) return;
+    const content = panel?.querySelector<HTMLElement>(".enterprise-spotlight-layout");
+    if (!panel || !content) return;
 
     const media = gsap.matchMedia();
-    media.add(
-      "(min-width: 64rem) and (min-height: 50rem) and (prefers-reduced-motion: no-preference)",
-      () => {
-        const pin = ScrollTrigger.create({
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const pinTop = 104;
+      const timeline = gsap.timeline({
+        scrollTrigger: {
           trigger: panel,
-          start: "top top+=104",
+          start: `top top+=${pinTop}`,
           end: () => `+=${panel.offsetHeight}`,
+          scrub: 0.6,
           pin: panel,
           // Keep the next section in normal flow so it can slide over the pinned panel.
           pinSpacing: false,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-        });
+        },
+      });
 
-        const refreshFrame = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+      timeline.to(
+        content,
+        {
+          // On short screens, scroll the pinned section's content through the viewport too.
+          y: () => -Math.max(0, panel.offsetHeight - (window.innerHeight - pinTop)),
+          ease: "none",
+        },
+        0,
+      );
 
-        return () => {
-          window.cancelAnimationFrame(refreshFrame);
-          pin.kill();
-        };
-      },
-    );
+      const refreshFrame = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+
+      return () => {
+        window.cancelAnimationFrame(refreshFrame);
+        timeline.scrollTrigger?.kill();
+        timeline.kill();
+      };
+    });
 
     return () => media.revert();
   }, []);
