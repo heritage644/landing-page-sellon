@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
-import Image from "next/image";
 import {
   ArrowUpRight,
   List,
-  Storefront,
   X,
 } from "@phosphor-icons/react";
+import SiteLogo from "@/components/site-logo";
+import { MAIN_WEBSITE_URL } from "@/lib/site-links";
 
 type CurrentPage = "home" | "privacy" | "terms" | "not-found";
 
@@ -26,7 +26,6 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const homePrefix = currentPage === "home" ? "" : "/";
-  const startedHref = `${homePrefix}#get-started`;
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -62,8 +61,7 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           aria-label="Sellonit home"
           aria-current={currentPage === "home" ? "page" : undefined}
         >
-         
-          <Image src="./logo.svg" alt="Sellonit" width={120} height={24} />
+          <SiteLogo className="brand-logo" />
         </a>
 
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -74,7 +72,7 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           ))}
         </nav>
 
-        <a className="header-cta" href={startedHref}>
+        <a className="header-cta" href={MAIN_WEBSITE_URL}>
           <span>Get started free</span>
           <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
         </a>
@@ -100,11 +98,8 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
         inert={!menuOpen}
       >
         <div className="mobile-menu-top">
-          <a className="brand-lockup" href={homePrefix || "#top"} onClick={closeMenu}>
-            <span className="brand-mark" aria-hidden="true">
-              <Storefront size={22} weight="fill" />
-            </span>
-            <Image src="./logo.svg" alt="Sellonit" width={100} height={24} />
+          <a className="brand-lockup" href={homePrefix || "#top"} onClick={closeMenu} aria-label="Sellonit home">
+            <SiteLogo className="brand-logo" />
           </a>
           <button
             className="mobile-menu-close"
@@ -129,7 +124,7 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           ))}
           <a
             className="mobile-nav-cta"
-            href={startedHref}
+            href={MAIN_WEBSITE_URL}
             style={{ "--menu-index": navigation.length } as CSSProperties}
             onClick={closeMenu}
           >

@@ -2,8 +2,8 @@ import {
   FacebookLogo,
   InstagramLogo,
   LinkedinLogo,
-  Storefront,
 } from "@phosphor-icons/react/ssr";
+import SiteLogo from "@/components/site-logo";
 
 type CurrentPage = "home" | "privacy" | "terms" | "not-found";
 
@@ -24,10 +24,7 @@ export default function SiteFooter({ currentPage = "home" }: SiteFooterProps) {
             aria-label="Sellonit home"
             aria-current={currentPage === "home" ? "page" : undefined}
           >
-            <span className="brand-mark" aria-hidden="true">
-              <Storefront size={22} weight="fill" />
-            </span>
-            <span className="brand-wordmark">sellonit<span>.</span></span>
+            <SiteLogo className="brand-logo footer-brand-logo" />
           </a>
           <p>Your products, your storefront, one clear place to grow.</p>
         </div>
