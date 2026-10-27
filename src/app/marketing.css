@@ -267,6 +267,7 @@
 }
 
 .product-hero .hero-title-line {
+  display: block;
   width: auto;
   padding: 0;
   color: var(--brand-navy);

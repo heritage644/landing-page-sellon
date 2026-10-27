@@ -167,7 +167,7 @@ img {
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   background: var(--glass-surface);
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.09);
+  box-shadow: 0 12px 36px rgba(76, 0, 255, 0.604);
   -webkit-backdrop-filter: blur(24px) saturate(165%);
   backdrop-filter: blur(24px) saturate(165%);
 }
@@ -424,7 +424,6 @@ img {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 0 0 24px;
 }
 
 .hero-glow {
@@ -505,7 +504,7 @@ img {
 
 .hero-title {
 
-  max-width: 680px;
+  max-width: 700px;
   margin: 24px 0 16px;
   font-size: 60px;
   font-weight: 600;
@@ -515,11 +514,6 @@ img {
 
 }
 
-.hero-title-line {
-  display: block;
-  width: fit-content;
-  padding-inline: 0.12em;
-}
 
 .hero-word-mask {
   display: inline-block;
