@@ -2,9 +2,10 @@ import Image from "next/image";
 
 type SiteLogoProps = {
   className?: string;
+  eager?: boolean;
 };
 
-export default function SiteLogo({ className = "" }: SiteLogoProps) {
+export default function SiteLogo({ className = "", eager = false }: SiteLogoProps) {
   return (
     <>
       <Image
@@ -13,6 +14,7 @@ export default function SiteLogo({ className = "" }: SiteLogoProps) {
         aria-hidden="true"
         width={160}
         height={36}
+        loading={eager ? "eager" : undefined}
         className={`site-logo site-logo-light ${className}`.trim()}
       />
       <Image
@@ -21,6 +23,7 @@ export default function SiteLogo({ className = "" }: SiteLogoProps) {
         aria-hidden="true"
         width={160}
         height={36}
+        loading={eager ? "eager" : undefined}
         className={`site-logo site-logo-dark ${className}`.trim()}
       />
     </>

@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { ArrowUpRight, List, X } from "@phosphor-icons/react";
 import SiteLogo from "@/components/site-logo";
-import ThemeToggle from "@/components/theme-toggle";
 import { MAIN_WEBSITE_URL } from "@/lib/site-links";
 
 type CurrentPage = "home" | "privacy" | "terms" | "not-found";
@@ -97,7 +96,7 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           aria-current={currentPage === "home" ? "page" : undefined}
           data-hero-logo={currentPage === "home" ? "" : undefined}
         >
-          <SiteLogo className="brand-logo" />
+          <SiteLogo className="brand-logo" eager />
         </a>
 
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -112,8 +111,6 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           <span>Get started free</span>
           <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
         </a>
-
-        <ThemeToggle className="header-theme-toggle" />
 
         <button
           ref={menuButtonRef}
@@ -143,18 +140,15 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           <a className="brand-lockup" href={homePrefix || "#top"} onClick={closeMenu} aria-label="Sellonit home">
             <SiteLogo className="brand-logo" />
           </a>
-          <div className="mobile-menu-tools">
-            <ThemeToggle className="mobile-theme-toggle" />
-            <button
-              ref={closeButtonRef}
-              className="mobile-menu-close"
-              type="button"
-              onClick={closeMenu}
-              aria-label="Close navigation menu"
-            >
-              <X size={24} weight="regular" aria-hidden="true" />
-            </button>
-          </div>
+          <button
+            ref={closeButtonRef}
+            className="mobile-menu-close"
+            type="button"
+            onClick={closeMenu}
+            aria-label="Close navigation menu"
+          >
+            <X size={24} weight="regular" aria-hidden="true" />
+          </button>
         </div>
         <nav className="mobile-nav" aria-label="Mobile navigation">
           {navigation.map((item, index) => (
