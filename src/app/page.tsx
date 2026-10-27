@@ -132,6 +132,7 @@ export default function Home() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
+      {/* Add data-hero-header to the root element inside SiteHeader so it joins the hero appear */}
       <SiteHeader currentPage="home" />
 
       <main id="main">
@@ -140,20 +141,20 @@ export default function Home() {
           <div className="hero-glow hero-glow-two" aria-hidden="true" />
           <div className="hero-inner page-container">
             <div className="hero-copy">
-              <p className="hero-kicker">
-                <span className="hero-kicker-icon" aria-hidden="true"><Sparkle size={15} weight="fill" /></span>
-                Built for independent sellers
-              </p>
-              <h1 className="hero-title" id="hero-title">
-                <span className="hero-title-line">Your products deserve</span>
-                <span className="hero-title-line">a store of their own.</span>
+             
+               
+              <h1 className="hero-title" id="hero-title flex flex-col gap-5">
+                <span className="hero-title-line text-black bg-[#FF8B00]">Your products deserve</span>
+                <span className="hero-title-line text-[#FF8B00] bg-black">a store of their own.</span>
               </h1>
               <p className="hero-subtitle">
                 Set up a polished storefront, add your products, and manage incoming orders from one simple place.
               </p>
               <div className="hero-actions">
                 <a className="button button-primary" href="#get-started">
-                  <span>Get started free</span>
+               <a href="https://verbose-enigma-q9vqp7j5q9j26499-3000.app.github.dev">
+               <span>Get started free</span>
+               </a>
                   <ArrowUpRight size={18} weight="bold" aria-hidden="true" />
                 </a>
                 <a className="button button-secondary" href="#how-it-works">
@@ -358,13 +359,14 @@ function HeroStorePreview() {
           <span className="browser-dot" />
           <div className="store-address"><LockKey size={12} weight="regular" /> sample storefront preview</div>
         </div>
-        <div className="storefront-page" data-reveal style={{ "--reveal-order": 12, "--reveal-distance": "10px" } as CSSProperties}>
+        <div className="storefront-page">
           <div className="storefront-nav">
             <div className="sample-store-name">naya <span>studio</span></div>
             <div className="sample-store-links"><span>Shop</span><span>Our story</span></div>
             <span className="sample-bag-icon" aria-hidden="true"><ShoppingBag size={18} weight="regular" /></span>
           </div>
           <div className="hero-product-image">
+            <span className="hero-photo-shimmer" aria-hidden="true" />
             <Image
               src="/featured-product.jpg"
               alt="Burnt orange leather crossbody bag in the sample Naya Studio storefront"
@@ -389,7 +391,7 @@ function HeroStorePreview() {
         </div>
       </div>
 
-      <div className="hero-order-card" data-reveal style={{ "--reveal-order": 13, "--reveal-distance": "10px" } as CSSProperties}>
+      <div className="hero-order-card">
         <span className="order-confirm-icon"><Check size={17} weight="bold" aria-hidden="true" /></span>
         <div className="hero-order-copy">
           <strong>Sample order received</strong>
@@ -398,7 +400,7 @@ function HeroStorePreview() {
         <span className="hero-order-price">₦28,450</span>
       </div>
 
-      <div className="hero-store-link-card" data-reveal style={{ "--reveal-order": 14, "--reveal-distance": "10px" } as CSSProperties}>
+      <div className="hero-store-link-card">
         <span className="store-link-icon"><Storefront size={19} weight="regular" aria-hidden="true" /></span>
         <div><span>Your storefront</span><strong>Ready to share</strong></div>
         <ArrowUpRight size={17} weight="regular" aria-hidden="true" />

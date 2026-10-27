@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import {
   ArrowUpRight,
   List,
@@ -61,10 +62,8 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
           aria-label="Sellonit home"
           aria-current={currentPage === "home" ? "page" : undefined}
         >
-          <span className="brand-mark" aria-hidden="true">
-            <Storefront size={22} weight="fill" />
-          </span>
-          <span className="brand-wordmark">sellonit<span>.</span></span>
+         
+          <Image src="./logo.svg" alt="Sellonit" width={120} height={24} />
         </a>
 
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -105,7 +104,7 @@ export default function SiteHeader({ currentPage = "home" }: SiteHeaderProps) {
             <span className="brand-mark" aria-hidden="true">
               <Storefront size={22} weight="fill" />
             </span>
-            <span className="brand-wordmark">sellonit<span>.</span></span>
+            <Image src="./logo.svg" alt="Sellonit" width={100} height={24} />
           </a>
           <button
             className="mobile-menu-close"
