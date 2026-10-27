@@ -6,8 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const DONUT_CIRCUMFERENCE = 219.91;
-
 export default function BusinessAnalyticsMotion() {
   useEffect(() => {
     const stage = document.querySelector<HTMLElement>("[data-analytics-stage]");
@@ -63,10 +61,9 @@ export default function BusinessAnalyticsMotion() {
         if (donut) {
           gsap.fromTo(
             donut,
-            { strokeDasharray: `0 ${DONUT_CIRCUMFERENCE}`, rotate: -90, transformOrigin: "50% 50%" },
+            { strokeDasharray: "0 100" },
             {
-              strokeDasharray: `${DONUT_CIRCUMFERENCE * 0.78} ${DONUT_CIRCUMFERENCE * 0.22}`,
-              rotate: -90,
+              strokeDasharray: "78 22",
               duration: 1.25,
               ease: "power2.out",
               scrollTrigger: {

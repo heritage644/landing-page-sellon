@@ -12,6 +12,7 @@ export default function HeroEntranceMotion() {
     const motion = gsap.matchMedia();
     motion.add("(prefers-reduced-motion: no-preference)", () => {
       const context = gsap.context(() => {
+        const headerShell = header.querySelector<HTMLElement>(".header-shell");
         const logo = header.querySelector<HTMLElement>("[data-hero-logo]");
         const navItems = Array.from(header.querySelectorAll<HTMLElement>("[data-hero-nav-item]"));
         const words = Array.from(main.querySelectorAll<HTMLElement>("[data-hero-word]"));
@@ -22,12 +23,14 @@ export default function HeroEntranceMotion() {
 
         const timeline = gsap.timeline({ defaults: { overwrite: "auto" } });
 
-        timeline.fromTo(
-          header,
-          { y: -14, opacity: 0, filter: "blur(6px)" },
-          { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.64, ease: "back.out(1.25)" },
-          0,
-        );
+        if (headerShell) {
+          timeline.fromTo(
+            headerShell,
+            { y: -14, opacity: 0, filter: "blur(6px)" },
+            { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.64, ease: "back.out(1.25)" },
+            0,
+          );
+        }
 
         if (logo) {
           timeline.fromTo(

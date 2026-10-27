@@ -47,10 +47,6 @@ const metrics = [
   },
 ] as const;
 
-const donutCircumference = 219.91;
-const onlineArc = donutCircumference * 0.78;
-const offlineArc = donutCircumference - onlineArc;
-
 export default function BusinessAnalyticsSection() {
   return (
     <section className="business-analytics-section section-space" id="analytics" aria-labelledby="analytics-title">
@@ -167,10 +163,9 @@ export default function BusinessAnalyticsSection() {
                           cx="50"
                           cy="50"
                           r="35"
-                          style={{
-                            strokeDasharray: `${onlineArc} ${offlineArc}`,
-                            strokeDashoffset: 0,
-                          }}
+                          pathLength="100"
+                          strokeDasharray="78 22"
+                          transform="rotate(-90 50 50)"
                         />
                       </svg>
                       <div className="analytics-donut-center" aria-hidden="true">
