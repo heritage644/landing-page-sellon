@@ -13,6 +13,7 @@ const geistSans = localFont({
 
 const siteTitle = "Sellonit | Your online store, made simple";
 const siteDescription = "Create a storefront, add your products, and manage orders in one place with Sellonit.";
+const themeInitScript = `(()=>{try{const saved=localStorage.getItem("sellonit-theme");const theme=saved==="dark"||saved==="light"?saved:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",theme)}catch(_){}})()`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://sellonit.com"),
@@ -48,7 +49,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={geistSans.variable}>
+    <html lang="en" data-theme="light" suppressHydrationWarning className={geistSans.variable}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <MotionController />
         {children}
