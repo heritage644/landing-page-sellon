@@ -18,14 +18,17 @@ export default function HeroSection() {
       <div className="hero-inner page-container">
         <div className="hero-copy">
           <h1 className="hero-title flex flex-col gap-5" id="hero-title">
-            <span className="hero-title-line text-black bg-[#FF8B00]">
-              <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>Your</span></span>{" "}
+            <div className="w-full ">
+              <span className="hero-title-line text-black  ">
+              <span className="hero-word-mask"><span className="hero-title-word " data-hero-word>Your</span></span>{" "}
               <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>products</span></span>{" "}
-              <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>deserve</span></span>
+              <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>deserve</span></span>{" "}
+              <span className="hero-word-mask"><span className="" data-hero-word>a</span></span>{" "}
+              <span className="hero-word-mask"><span className="" data-hero-word>store</span></span>{" "}
             </span>
-            <span className="hero-title-line text-[#FF8B00] bg-black">
-              <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>a</span></span>{" "}
-              <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>store</span></span>{" "}
+            </div>
+            <span className="hero-title-line text-[#FF8B00] bg-black ">
+              
               <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>of</span></span>{" "}
               <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>their</span></span>{" "}
               <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>own.</span></span>

@@ -3,11 +3,11 @@ import { MAIN_WEBSITE_URL } from "@/lib/site-links";
 
 export default function FinalCtaSection() {
   return (
-    <section className="final-cta-section" id="get-started" aria-labelledby="final-cta-title" data-reveal>
+    <section className="final-cta-section " id="get-started" 
+    aria-labelledby="final-cta-title" data-reveal >
       <div className="cta-glow" aria-hidden="true" />
       <div className="final-cta-inner page-container">
         <div className="final-cta-copy">
-          <p className="eyebrow"><span className="eyebrow-dot" /> YOUR NEXT SALE STARTS HERE</p>
           <h2 id="final-cta-title">Give your products a place to grow.</h2>
           <p>Start with a free storefront, add the products you love, and share your link when you are ready.</p>
         </div>
