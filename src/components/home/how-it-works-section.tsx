@@ -44,12 +44,13 @@ export default function HowItWorksSection() {
   const step = steps[activeStep];
 
   return (
-    <section className="how-it-works-section section-space" id="how-it-works" aria-labelledby="how-it-works-title">
-      <div className="page-container">
-        <div className="steps-header" data-reveal>
-          <div>
-            <p className="eyebrow"><span className="eyebrow-dot" /> HOW SELLONIT IS DESIGNED TO WORK</p>
-            <h2 id="how-it-works-title">From supplier to customer.</h2>
+    <section className="  how-it-works-section section-space" id="how-it-works" aria-labelledby="how-it-works-title">
+      <div className="page-container ">
+        <div className="steps-header flex items-start text-start items-center just-center
+         " data-reveal>
+          <div className="pl-3 w-full text-start">
+            
+            <h2 id="how-it-works-title" className=" bg-[#ff8b00] ">From supplier to customer.</h2>
           </div>
           <p>Explore the intended journey from product information to a customer-facing store. These steps describe the product direction, not live Sellonit workflows.</p>
         </div>

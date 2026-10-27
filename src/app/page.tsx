@@ -23,8 +23,6 @@ export default function Home() {
       <main id="main">
         <HeroSection />
         <ProblemSection />
-        <PlatformRolesSection />
-        <TrustStrip />
         <HowItWorksSection />
         <GlobalReachSection />
         <AudienceSpotlight audience="retailer" id="for-retailers" />

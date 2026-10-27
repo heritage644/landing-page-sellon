@@ -23,12 +23,14 @@ const problemCards = [
 
 export default function ProblemSection() {
   return (
-    <section className="problem-section section-space" id="the-problem" aria-labelledby="problem-title">
+    <section className=" bg-[#3FBFFF] section-space" id="the-problem" aria-labelledby="problem-title">
       <div className="page-container">
         <div className="problem-intro" data-reveal>
-          <p className="eyebrow"><span className="eyebrow-dot" /> THE REALITY OF SELLING</p>
-          <h2 id="problem-title">Running a business involves more than making sales.</h2>
-          <p>Many Nigerian businesses sell through WhatsApp, Instagram, referrals, and physical shops. As the business grows, keeping everything organised can become harder.</p>
+          <h2 id="problem-title">Running a business involves more than making sales <span className="text-orange-400">.</span></h2>
+          <p className="text-black">Many Nigerian businesses 
+            sell through WhatsApp, Instagram, referrals,
+             and physical shops. As the business grows,
+              keeping everything organised can become harder.</p>
         </div>
 
         <div className="problem-story-grid">
@@ -57,15 +59,6 @@ export default function ProblemSection() {
           </div>
         </div>
 
-        <div className="problem-cards">
-          {problemCards.map(({ icon: Icon, title, copy }, index) => (
-            <article className="problem-card" data-reveal key={title} style={{ "--reveal-order": index } as CSSProperties}>
-              <span className="problem-card-icon"><Icon size={21} aria-hidden="true" /></span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
-        </div>
       </div>
     </section>
   );

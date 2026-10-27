@@ -57,7 +57,7 @@ export default function PlatformRolesSection() {
     <section className="platform-roles-section section-space" id="roles" aria-labelledby="roles-title">
       <div className="page-container">
         <div className="section-heading" data-reveal>
-          <p className="eyebrow"><span className="eyebrow-dot" /> INTRODUCING SELLONIT</p>
+         
           <h2 id="roles-title">One platform for the people behind every sale.</h2>
           <p>Suppliers can provide products for retailers to sell, retailers can create their own storefronts, and businesses can manage their selling activities from a central workspace as those tools are released.</p>
         </div>

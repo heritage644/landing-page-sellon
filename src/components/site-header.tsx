@@ -17,14 +17,13 @@ const navigation = [
   { label: "For Suppliers", href: "/suppliers" },
   { label: "For Entrepreneurs", href: "/entrepreneurs" },
   { label: "For Enterprise", href: "/enterprise" },
-  { label: "Analytics", href: "/analytics" },
+  
 ];
 
 const featureLinks = [
   { label: "Storefronts", href: "/features#storefronts", description: "A dedicated place to present products" },
   { label: "Product Management", href: "/features#product-management", description: "Organise catalogues and product details" },
   { label: "Orders", href: "/features#orders", description: "Explore the planned order workflows" },
-  { label: "Business Analytics", href: "/analytics", description: "Understand the product direction" },
 ];
 
 export default function SiteHeader({ currentPath = "/" }: SiteHeaderProps) {
@@ -122,7 +121,7 @@ export default function SiteHeader({ currentPath = "/" }: SiteHeaderProps) {
               <Link href="/features" className="header-dropdown-all" onClick={closeOnNavigate}>Explore all features <ArrowUpRight size={14} aria-hidden="true" /></Link>
             </div>
           </details>
-          <Link href="/analytics" aria-current={currentPath === "/analytics" ? "page" : undefined} data-hero-nav-item>Analytics</Link>
+         
         </nav>
 
         <div className="header-actions">
@@ -178,7 +177,7 @@ export default function SiteHeader({ currentPath = "/" }: SiteHeaderProps) {
             <a className="button button-primary" href={MAIN_WEBSITE_URL} onClick={closeMenu}>Get Started <ArrowUpRight size={16} aria-hidden="true" /></a>
           </div>
         </nav>
-        <p className="mobile-menu-note">Built around the way Nigerian businesses sell.</p>
+        <p className="mobile-menu-note pt-2">Built around the way Nigerian businesses sell.</p>
       </div>
     </header>
   );

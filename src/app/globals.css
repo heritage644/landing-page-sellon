@@ -72,6 +72,42 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+#slong{
+
+  font-weight: bold;
+  background: linear-gradient(to right, #42a5f5, #bc7047, #e2ff60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: sweep 6s linear infinite;
+}
+
+@keyframes sweep {
+  0% { background-position: 200% center; }
+  100% { background-position: 0 center; }
+}
+
+#color{
+animation: breathe 3s ease-in-out infinite;
+ transition: 0.3s ease, text 0.3s ease;
+}
+
+@keyframes breathe {
+0%, 100% {
+box-shadow:
+0 0 5px #ffaf60,
+0 0 10px #3d383c,
+0 0 15px#ffa060;
+transform: scale(1);
+}
+50% {
+box-shadow:
+0 0 15px #846f5e,
+0 0 20px #bc8547,
+0 0 60px rgb#f59e42;
+transform: scale(1.01);
+}}
+
 button,
 input {
   font: inherit;
@@ -167,7 +203,6 @@ img {
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   background: var(--glass-surface);
-  box-shadow: 0 12px 36px ;
   -webkit-backdrop-filter: blur(24px) saturate(165%);
   backdrop-filter: blur(24px) saturate(165%);
 }
@@ -1004,7 +1039,7 @@ img {
 .showcase-intro h2,
 .pricing-intro h2,
 .faq-intro h2 {
-  margin: 16px 0 12px;
+  margin: 0px 10px 80px 0px;
   color: var(--ink);
   font-size: 48px;
   font-weight: 600;
@@ -1019,7 +1054,7 @@ img {
 .pricing-intro > p:not(.eyebrow),
 .faq-intro > p:not(.eyebrow) {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink);
   font-size: 18px;
   line-height: 28px;
   text-wrap: pretty;
@@ -3925,7 +3960,7 @@ img {
 .global-reach-section {
   position: relative;
   overflow: hidden;
-  background: #f4f8fc;
+  background: #00875A;
 }
 
 .global-reach-section,
@@ -4010,8 +4045,6 @@ img {
 .business-analytics-copy > p:last-child {
   max-width: 620px;
   margin: 16px auto 0;
-  color: var(--muted);
-  font-size: 18px;
   line-height: 28px;
   text-wrap: pretty;
 }

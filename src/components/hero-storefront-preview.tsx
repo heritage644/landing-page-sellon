@@ -33,7 +33,7 @@ export default function HeroStorefrontPreview() {
           </div>
           <div className="hero-product-image">
             <ProductVector key={product.kind} className="hero-product-art" kind={product.kind} aria-hidden="true" />
-            <span className="product-image-label">Illustrative product listing</span>
+            <span className="product-image-label" > Product listing</span>
           </div>
           <div className="hero-product-details" aria-live="polite" aria-atomic="true">
             <div>
@@ -41,10 +41,7 @@ export default function HeroStorefrontPreview() {
               <h2>{product.name}</h2>
               <p>{product.description}</p>
             </div>
-            <div className="product-buy-column">
-              <strong>Product concept</strong>
-              <span className="product-buy-button">Preview listing <ArrowUpRight size={14} aria-hidden="true" /></span>
-            </div>
+            
           </div>
           <div className="hero-product-picker" role="group" aria-label="Choose a sample product to preview">
             {products.map((item, index) => (
@@ -63,20 +60,6 @@ export default function HeroStorefrontPreview() {
         </div>
       </div>
 
-      <div className="hero-order-card">
-        <span className="order-confirm-icon"><Package size={18} aria-hidden="true" /></span>
-        <div className="hero-order-copy">
-          <strong>Commerce tools in development</strong>
-          <span>Sample storefront · no live orders</span>
-        </div>
-        <span className="hero-order-status">DEMO</span>
-      </div>
-
-      <div className="hero-store-link-card">
-        <span className="store-link-icon"><Storefront size={19} aria-hidden="true" /></span>
-        <div><span>Storefront</span><strong>Concept preview</strong></div>
-        <ArrowUpRight size={17} aria-hidden="true" />
-      </div>
     </div>
   );
 }

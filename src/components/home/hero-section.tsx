@@ -16,7 +16,6 @@ export default function HeroSection() {
       <div className="hero-glow hero-glow-two" aria-hidden="true" />
       <div className="hero-inner page-container">
         <div className="hero-copy">
-          <p className="hero-intro-label">INTRODUCING SELLONIT</p>
           <h1 className="hero-title" id="hero-title">
             {headlineLines.map((line) => {
               const words = line.text.split(" ");
@@ -24,7 +23,7 @@ export default function HeroSection() {
                 <span className={`hero-title-line hero-title-line-${line.tone}`} key={line.text}>
                   {words.map((word, index) => (
                     <Fragment key={`${line.text}-${word}`}>
-                      <span className="hero-word-mask"><span className="hero-title-word" data-hero-word>{word}</span></span>
+                      <span className="hero-word-mask " ><span className="hero-title-word"  data-hero-word>{word}</span></span>
                       {index < words.length - 1 ? " " : null}
                     </Fragment>
                   ))}
@@ -44,7 +43,7 @@ export default function HeroSection() {
             </Link>
           </div>
           <div className="hero-reassurance">
-            <span className="reassurance-item">Business account setup is available; commerce tools are releasing in phases.</span>
+    
           </div>
         </div>
 
@@ -52,11 +51,7 @@ export default function HeroSection() {
           <HeroStorefrontPreview />
         </div>
       </div>
-      <div className="hero-footer-note page-container" aria-hidden="true">
-        <span className="hero-note-line" />
-        <span>YOUR NEXT CHAPTER STARTS HERE</span>
-        <span className="hero-note-line" />
-      </div>
+      
     </section>
   );
 }
