@@ -75,15 +75,15 @@ const mapPins = [
 
 export default function GlobalReachSection() {
   return (
-    <section className="global-reach-section section-space" id="global-reach" aria-labelledby="global-reach-title">
+    <section className="global-reach-section section-space bg-[#00875A] text-white dark:bg-[#101a28]" id="global-reach" aria-labelledby="global-reach-title">
       <div className="page-container">
         <div className="global-reach-copy">
          
-          <h2 id="global-reach-title" >
+          <h2 className="text-white" id="global-reach-title">
             <span >Built here.</span>
             <span> With room to grow.</span>
           </h2>
-          <p className="global-reach-description">
+          <p className="global-reach-description font-semibold text-white">
             Sellonit is being built around how Nigerian businesses source products, sell, and reach customers. This map is an illustrative view of future possibilities—not a claim about currently supported markets or currencies.
           </p>
           <div className="global-pagination" aria-hidden="true">

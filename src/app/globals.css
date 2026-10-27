@@ -3969,7 +3969,6 @@ img {
 .global-reach-section {
   position: relative;
   overflow: hidden;
-  background: #00875A;
 }
 
 .global-reach-section,
@@ -4005,10 +4004,6 @@ img {
     --glass-border: rgba(199, 219, 241, 0.16);
   }
 
-  .global-reach-section {
-    background: #101a28;
-  }
-
   .business-analytics-section {
     background: #152233;
   }
@@ -4024,6 +4019,9 @@ img {
 .global-reach-eyebrow,
 .analytics-eyebrow {
   justify-content: center;
+}
+
+.analytics-eyebrow {
   color: var(--green-deep);
 }
 
@@ -4036,7 +4034,6 @@ img {
 .global-reach-copy h2,
 .business-analytics-copy h2 {
   margin: 18px 0 12px;
-  color: var(--ink);
   font-size: clamp(2.7rem, 5.2vw, 4.15rem);
   font-weight: 600;
   letter-spacing: -0.068em;
@@ -4044,9 +4041,16 @@ img {
   text-wrap: balance;
 }
 
+.business-analytics-copy h2 {
+  color: var(--ink);
+}
+
 .global-reach-copy h2 span,
 .business-analytics-copy h2 span {
   display: block;
+}
+
+.business-analytics-copy h2 span {
   color: var(--green);
 }
 
@@ -4193,7 +4197,6 @@ img {
   justify-content: center;
   gap: 8px;
   margin: 18px 0 0;
-  color: var(--muted);
   font-size: 13px;
   line-height: 20px;
 }
