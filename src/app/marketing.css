@@ -1113,15 +1113,20 @@
   --brand-blue-soft: #f5f9fd;
 }
 
+.enterprise-spotlight {
+  --paper-cut-underlay: #f7faff;
+  --paper-cut-shadow: rgba(23, 42, 69, 0.14);
+}
+
 .enterprise-spotlight,
 .who-use-section {
   --brand-blue: #eaf2fa;
   --glass-surface: rgba(255, 255, 255, 0.86);
   --glass-panel: #ffffff;
   --glass-border: rgba(191, 210, 229, 0.75);
-  --paper-edge-shadow: rgba(23, 42, 69, 0.18);
   --card-extrusion: #dce8f2;
   --card-shadow: rgba(23, 42, 69, 0.14);
+  --orange-stack-shadow: rgba(23, 42, 69, 0.16);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1143,98 +1148,143 @@
     --brand-blue-soft: #1b3044;
   }
 
+  .enterprise-spotlight {
+    --paper-cut-underlay: #152233;
+    --paper-cut-shadow: rgba(0, 0, 0, 0.3);
+  }
+
   .enterprise-spotlight,
   .who-use-section {
     --brand-blue: #1a293a;
     --glass-surface: rgba(20, 32, 47, 0.88);
     --glass-panel: #121d2c;
     --glass-border: rgba(199, 219, 241, 0.16);
-    --paper-edge-shadow: rgba(0, 0, 0, 0.38);
     --card-extrusion: #07111e;
     --card-shadow: rgba(5, 12, 21, 0.48);
+    --orange-stack-shadow: rgba(0, 0, 0, 0.32);
   }
 }
 
-/* Custom geometry: an angular paper edge and perspective-driven card depth. */
-.enterprise-spotlight::before {
+/* Soft paper layering and a short, bounded sticky stack for the two orange panels. */
+@media (min-width: 64rem) and (min-height: 47.5rem) {
+  .orange-section-stack > .enterprise-spotlight {
+    position: sticky;
+    z-index: 10;
+    top: 104px;
+  }
+
+  .orange-section-stack > .who-use-section {
+    position: sticky;
+    z-index: 20;
+    top: 104px;
+    box-shadow: 0 -14px 28px var(--orange-stack-shadow);
+  }
+}
+
+.enterprise-spotlight::before,
+.enterprise-spotlight::after {
   position: absolute;
-  z-index: 0;
-  top: -26px;
   right: 0;
   bottom: 0;
   left: 0;
-  background: var(--brand-orange);
-  clip-path: polygon(
-    0 5%, 6% 2%, 12% 7%, 18% 3%, 24% 8%, 30% 4%, 36% 7%, 42% 2%,
-    48% 6%, 54% 3%, 60% 8%, 66% 4%, 72% 7%, 78% 2%, 84% 6%, 90% 3%,
-    96% 7%, 100% 4%, 100% 100%, 0 100%
-  );
   content: "";
-  filter: drop-shadow(0 8px 5px var(--paper-edge-shadow));
   pointer-events: none;
 }
 
-.who-use-grid {
-  perspective: 1200px;
-  perspective-origin: 50% 42%;
+/* This backing uses the analytics section's exact surface colour and peeks out under the orange sheet. */
+.enterprise-spotlight::before {
+  z-index: 0;
+  top: -34px;
+  background: var(--paper-cut-underlay);
+  clip-path: polygon(
+    0 4%, 6% 2.9%, 12% 4.2%, 18% 3%, 24% 4.3%, 30% 2.8%, 36% 4%,
+    42% 2.7%, 48% 4.4%, 54% 3%, 60% 4.1%, 66% 2.8%, 72% 4.3%,
+    78% 3%, 84% 4%, 90% 2.7%, 96% 4.2%, 100% 3.1%, 100% 100%, 0 100%
+  );
+  filter: drop-shadow(0 8px 7px var(--paper-cut-shadow));
 }
 
-.who-use-card {
-  transform: translateZ(0);
-  transform-style: preserve-3d;
+.enterprise-spotlight::after {
+  z-index: 1;
+  top: -28px;
+  background: var(--brand-orange);
+  clip-path: polygon(
+    0 3.5%, 5% 2.6%, 11% 3.7%, 17% 2.4%, 23% 3.8%, 29% 2.5%, 35% 3.4%,
+    41% 2.2%, 47% 3.9%, 53% 2.8%, 59% 3.6%, 65% 2.3%, 71% 3.8%,
+    77% 2.5%, 83% 3.4%, 89% 2.2%, 95% 3.7%, 100% 2.9%, 100% 100%, 0 100%
+  );
+  filter: drop-shadow(0 5px 5px var(--paper-cut-shadow));
 }
 
-.who-use-card::before {
-  position: absolute;
-  z-index: -1;
-  right: 8px;
-  bottom: -11px;
-  left: 8px;
-  height: 18px;
-  border: 1px solid color-mix(in srgb, var(--card-extrusion) 75%, transparent);
-  border-radius: 0 0 12px 12px;
-  background: linear-gradient(180deg, var(--card-extrusion), color-mix(in srgb, var(--card-extrusion) 70%, var(--brand-orange)));
-  content: "";
-  transform: translate3d(0, 4px, -12px);
-  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+@media (max-width: 700px) {
+  .enterprise-spotlight::before { top: -26px; }
+  .enterprise-spotlight::after { top: -22px; }
 }
 
-.who-use-card::after {
-  position: absolute;
-  top: 0;
-  right: 20px;
-  left: 20px;
-  height: 3px;
-  border-radius: 0 0 4px 4px;
-  background: linear-gradient(90deg, transparent, var(--brand-orange), transparent);
-  content: "";
-  opacity: 0.85;
-  transform: translateZ(18px);
+/* Perspective and extruded card edges are intentionally lg-only (Tailwind's 64rem breakpoint). */
+@media (min-width: 64rem) {
+  .who-use-grid {
+    perspective: 1200px;
+    perspective-origin: 50% 42%;
+  }
+
+  .who-use-card {
+    transform: translateZ(0);
+    transform-style: preserve-3d;
+  }
+
+  .who-use-card::before {
+    position: absolute;
+    z-index: -1;
+    right: 8px;
+    bottom: -11px;
+    left: 8px;
+    height: 18px;
+    border: 1px solid color-mix(in srgb, var(--card-extrusion) 75%, transparent);
+    border-radius: 0 0 12px 12px;
+    background: linear-gradient(180deg, var(--card-extrusion), color-mix(in srgb, var(--card-extrusion) 70%, var(--brand-orange)));
+    content: "";
+    transform: translate3d(0, 4px, -12px);
+    transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .who-use-card::after {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    left: 20px;
+    height: 3px;
+    border-radius: 0 0 4px 4px;
+    background: linear-gradient(90deg, transparent, var(--brand-orange), transparent);
+    content: "";
+    opacity: 0.85;
+    transform: translateZ(18px);
+  }
+
+  .who-use-card:nth-child(4n + 1) { --card-tilt-x: 2.5deg; --card-tilt-y: -3.2deg; }
+  .who-use-card:nth-child(4n + 2) { --card-tilt-x: -2deg; --card-tilt-y: 2.8deg; }
+  .who-use-card:nth-child(4n + 3) { --card-tilt-x: 2deg; --card-tilt-y: -2.2deg; }
+  .who-use-card:nth-child(4n + 4) { --card-tilt-x: -2.5deg; --card-tilt-y: 3deg; }
+
+  .who-use-card > strong,
+  .who-use-description,
+  .who-use-card-index,
+  .who-use-icon,
+  .who-use-arrow {
+    transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateZ(14px);
+  }
+
+  .who-use-icon { transform: translateZ(24px); }
+  .who-use-card-index { transform: translateZ(20px); }
+  .who-use-arrow { transform: translateZ(28px); }
+
+  .who-use-card:focus-visible {
+    transform: translate3d(0, -6px, 12px);
+  }
 }
 
-.who-use-card:nth-child(4n + 1) { --card-tilt-x: 2.5deg; --card-tilt-y: -3.2deg; }
-.who-use-card:nth-child(4n + 2) { --card-tilt-x: -2deg; --card-tilt-y: 2.8deg; }
-.who-use-card:nth-child(4n + 3) { --card-tilt-x: 2deg; --card-tilt-y: -2.2deg; }
-.who-use-card:nth-child(4n + 4) { --card-tilt-x: -2.5deg; --card-tilt-y: 3deg; }
-
-.who-use-card > strong,
-.who-use-description,
-.who-use-card-index,
-.who-use-icon,
-.who-use-arrow {
-  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  transform: translateZ(14px);
-}
-
-.who-use-icon { transform: translateZ(24px); }
-.who-use-card-index { transform: translateZ(20px); }
-.who-use-arrow { transform: translateZ(28px); }
-
-.who-use-card:focus-visible {
-  transform: translate3d(0, -6px, 12px);
-}
-
-@media (hover: hover) and (pointer: fine) {
+@media (min-width: 64rem) and (hover: hover) and (pointer: fine) {
   .who-use-card:hover {
     z-index: 2;
     border-color: var(--brand-orange);
@@ -1260,16 +1310,21 @@
   }
 }
 
-@media (max-width: 700px) {
-  .enterprise-spotlight::before { top: -20px; }
-  .who-use-grid { perspective: 1000px; }
-}
-
-@media (max-width: 420px) {
-  .who-use-grid { perspective: 850px; }
+@media (min-width: 64rem) and (hover: none) {
+  .who-use-card:hover {
+    transform: none;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.7), 0 12px 24px var(--card-shadow);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .orange-section-stack > .enterprise-spotlight,
+  .orange-section-stack > .who-use-section {
+    position: relative;
+    z-index: auto;
+    top: auto;
+  }
+
   .who-use-card,
   .who-use-card::before,
   .who-use-card::after,
@@ -1279,23 +1334,7 @@
   .who-use-icon,
   .who-use-arrow {
     transition: none !important;
-  }
-
-  .who-use-card:hover,
-  .who-use-card:focus-visible,
-  .who-use-card:hover::before,
-  .who-use-card:hover .who-use-icon,
-  .who-use-card:hover > strong,
-  .who-use-card:hover .who-use-description,
-  .who-use-card:hover .who-use-arrow {
     transform: none !important;
-  }
-}
-
-@media (hover: none) {
-  .who-use-card:hover {
-    transform: none;
-    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.7), 0 12px 24px var(--card-shadow);
   }
 }
 

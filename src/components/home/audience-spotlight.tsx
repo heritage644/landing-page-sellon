@@ -101,7 +101,7 @@ export function AudienceSpotlight({ audience, id }: { audience: Audience; id: st
 export function EnterpriseSpotlight() {
   return (
     <section className="enterprise-spotlight section-space relative isolate overflow-visible bg-transparent" id="for-enterprise" aria-labelledby="enterprise-spotlight-title">
-      <div className="page-container enterprise-spotlight-layout relative z-[1]">
+      <div className="page-container enterprise-spotlight-layout relative z-[2]">
         <div className="enterprise-spotlight-copy [--muted:#263d54]" data-reveal>
           <h2 className="[--ink:#172019]" id="enterprise-spotlight-title">One business may have several sides to manage.</h2>
           <p>Sellonit’s enterprise direction is designed for businesses that supply retailers, sell directly to customers, or operate through multiple teams and business units.</p>
