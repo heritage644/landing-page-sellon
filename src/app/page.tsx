@@ -29,8 +29,10 @@ export default function Home() {
         <AudienceSpotlight audience="supplier" id="for-suppliers" />
         <AudienceSpotlight audience="entrepreneur" id="for-entrepreneurs" />
         <BusinessAnalyticsSection />
-        <EnterpriseSpotlight />
-        <WhoShouldUseSection />
+        <div className="orange-section-stack">
+          <EnterpriseSpotlight />
+          <WhoShouldUseSection />
+        </div>
         <FaqSection />
         <FinalCtaSection />
       </main>
