@@ -79,14 +79,9 @@ export function AudienceSpotlight({ audience, id }: { audience: Audience; id: st
     <section className={`audience-spotlight audience-spotlight-${audience} section-space`} id={id} aria-labelledby={`${id}-title`}>
       <div className="page-container audience-spotlight-layout">
         <div className="audience-spotlight-copy" data-reveal>
-          <p className="eyebrow"><span className="eyebrow-dot" />{item.label}</p>
+        
           <h2 id={`${id}-title`}>{item.title}</h2>
           {item.paragraphs.map((paragraph) => <p className="audience-description" key={paragraph}>{paragraph}</p>)}
-          <ul className="audience-feature-list">
-            {item.features.map((feature) => (
-              <li key={feature.title}><span className="audience-feature-check"><Check size={13} weight="bold" aria-hidden="true" /></span><span><strong>{feature.title}</strong><small>{feature.description}</small></span></li>
-            ))}
-          </ul>
           <div className="audience-actions">
             <Link className="button button-primary" href={item.route}>{item.cta}<ArrowRight size={16} aria-hidden="true" /></Link>
             <Link className="audience-secondary-link" href="/how-it-works">How it works <ArrowUpRight size={15} aria-hidden="true" /></Link>
@@ -94,7 +89,6 @@ export function AudienceSpotlight({ audience, id }: { audience: Audience; id: st
           <p className="product-roadmap-note">The exact tools and workflows depend on product releases and your business eligibility.</p>
         </div>
         <div className="audience-spotlight-visual" data-reveal>
-          <div className="audience-visual-caption"><span className="audience-visual-caption-dot" />{item.artworkLabel}</div>
           {audience === "retailer" ? <ProductCatalogExplorer mode="retailer" /> : null}
           {audience === "supplier" ? <ProductCatalogExplorer mode="supplier" /> : null}
           {audience === "entrepreneur" ? <StorefrontBuilderPreview /> : null}
@@ -106,12 +100,11 @@ export function AudienceSpotlight({ audience, id }: { audience: Audience; id: st
 
 export function EnterpriseSpotlight() {
   return (
-    <section className="enterprise-spotlight section-space" id="for-enterprise" aria-labelledby="enterprise-spotlight-title">
+    <section className="enterprise-spotlight bg-[#ff8b00] section-space" id="for-enterprise" aria-labelledby="enterprise-spotlight-title">
       <div className="page-container enterprise-spotlight-layout">
         <div className="enterprise-spotlight-copy" data-reveal>
-          <p className="eyebrow"><span className="eyebrow-dot" /> BUILT FOR ENTERPRISE</p>
-          <h2 id="enterprise-spotlight-title">One business may have several sides to manage.</h2>
-          <p>Sellonit’s enterprise direction is designed for businesses that supply retailers, sell directly to customers, or operate through multiple teams and business units.</p>
+          <h2 id="" className="text-black">One business may have several sides to manage.</h2>
+          <p className="text-black">Sellonit’s enterprise direction is designed for businesses that supply retailers, sell directly to customers, or operate through multiple teams and business units.</p>
           <p>Supplier, retail, and business-management capabilities are being developed within a shared structure, with access designed to follow each user’s role and permissions.</p>
           <Link className="button button-secondary" href="/enterprise">Explore Enterprise <ArrowRight size={16} aria-hidden="true" /></Link>
           <span className="product-roadmap-note">Plan limits, features, and pricing will be confirmed before publication.</span>

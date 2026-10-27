@@ -72,14 +72,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#slong{
+.slong{
 
   font-weight: bold;
-  background: linear-gradient(to right, #42a5f5, #bc7047, #e2ff60);
+  background: linear-gradient(to right, #42a5f5, #9347bc, #ff8b00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
-  animation: sweep 6s linear infinite;
+  animation: sweep 10s linear infinite;
 }
 
 @keyframes sweep {
@@ -1039,7 +1039,7 @@ img {
 .showcase-intro h2,
 .pricing-intro h2,
 .faq-intro h2 {
-  margin: 0px 10px 80px 0px;
+  margin: 0px 0px 10px 0px;
   color: var(--ink);
   font-size: 48px;
   font-weight: 600;

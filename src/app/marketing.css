@@ -669,7 +669,6 @@
 }
 
 .platform-roles-section,
-.who-use-section,
 .features-page-section,
 .analytics-detail-section {
   background: var(--brand-blue-soft);
@@ -1043,8 +1042,8 @@
 .audience-spotlight-visual { min-width: 0; }
 .audience-visual-caption { display: flex; align-items: center; gap: 7px; margin-bottom: 9px; color: var(--muted); font-size: 9px; font-weight: 650; text-transform: uppercase; letter-spacing: 0.08em; }
 .audience-visual-caption-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
-.enterprise-spotlight { background: var(--brand-blue-soft); }
-.enterprise-spotlight-copy .button { min-height: 43px; gap: 8px; padding: 7px 12px; font-size: 12px; }
+.enterprise-spotlight 
+.enterprise-spotlight-copy .button { min-height: 43px; gap: 8px; padding: 7px 12px; font-size: 14px; }
 .enterprise-spotlight-visual { min-width: 0; }
 .enterprise-spotlight-copy .product-roadmap-note { max-width: 380px; }
 

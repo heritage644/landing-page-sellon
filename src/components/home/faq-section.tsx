@@ -63,7 +63,6 @@ export default function FaqSection() {
     <section className="faq-section section-space" id="faq" aria-labelledby="faq-title">
       <div className="page-container faq-layout">
         <div className="faq-intro" data-reveal>
-          <p className="eyebrow"><span className="eyebrow-dot" /> GOOD QUESTIONS</p>
           <h2 id="faq-title">A few things worth knowing.</h2>
           <p>Understand the product direction, who it is for, and what is still being developed.</p>
           <Link className="text-link" href="/features">Explore product features <span aria-hidden="true">→</span></Link>

@@ -30,7 +30,7 @@ export default function SiteFooter({ currentPath = "/" }: SiteFooterProps) {
             <SiteLogo className="brand-logo footer-brand-logo" />
           </Link>
           <p>Sellonit is building a commerce platform that connects suppliers, retailers, and businesses through product catalogues, online storefronts, and business-management tools.</p>
-          <span className="footer-coming-soon"><i /> Sellonit is coming.</span>
+          
         </div>
 
         <nav className="footer-nav" aria-label="Platform links">

@@ -11,10 +11,9 @@ const businessTypes = [
 
 export function WhoShouldUseSection() {
   return (
-    <section className="who-use-section section-space" id="who-its-for" aria-labelledby="who-use-title">
+    <section className="who-use-section section-space bg-[#ff8b00]" id="who-its-for" aria-labelledby="who-use-title">
       <div className="page-container">
         <div className="section-heading" data-reveal>
-          <p className="eyebrow"><span className="eyebrow-dot" /> FIND YOUR PLACE</p>
           <h2 id="who-use-title">Whatever your role in selling, there’s a place for you.</h2>
           <p>Sellonit is being built around the people and businesses moving products from supply to customer.</p>
         </div>

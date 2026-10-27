@@ -8,7 +8,6 @@ export default function FinalCtaSection() {
       <div className="cta-glow" aria-hidden="true" />
       <div className="final-cta-inner page-container">
         <div className="final-cta-copy">
-          <p className="eyebrow"><span className="eyebrow-dot" /> SELLONIT IS COMING</p>
           <h2 id="final-cta-title">Your next chapter in selling starts here.</h2>
           <p>We’re building Sellonit for the people who make commerce happen every day. Join us as we create a better way for Nigerian businesses to sell and grow.</p>
         </div>

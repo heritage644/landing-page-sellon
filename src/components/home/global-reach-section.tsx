@@ -80,8 +80,8 @@ export default function GlobalReachSection() {
       <div className="page-container">
         <div className="global-reach-copy">
          
-          <h2 id="global-reach-title">
-            Built here.
+          <h2 id="global-reach-title" >
+            <span >Built here.</span>
             <span> With room to grow.</span>
           </h2>
           <p className="global-reach-descriptio text-white font-semi-bold text-[18px]">
@@ -95,7 +95,7 @@ export default function GlobalReachSection() {
           <span className="visually-hidden">Global commerce overview, page 1 of 3.</span>
         </div>
 
-        <div className="global-map-stage" data-global-map>
+        <div className="global-map-stage" id="color" data-global-map>
           <svg className="global-map-svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
             <g className="global-map-land">
               <path d="M93 143 112 112 147 90 187 73 218 82 245 99 261 127 279 142 271 164 293 177 280 198 258 200 242 222 213 229 200 254 179 252 163 232 141 225 132 202 111 192 104 170 88 163Z" />

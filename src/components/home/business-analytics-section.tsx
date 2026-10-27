@@ -42,13 +42,10 @@ export default function BusinessAnalyticsSection() {
     <section className="business-analytics-section section-space" id="analytics" aria-labelledby="analytics-title">
       <div className="page-container">
         <div className="business-analytics-copy">
-          <p className="eyebrow analytics-eyebrow">
-            <span className="eyebrow-dot" aria-hidden="true" />
-            BUSINESS ANALYTICS
-          </p>
+      
           <h2 id="analytics-title">
             Understand your business.
-            <span> Beyond individual sales.</span>
+            <span className="slong"> Beyond individual sales.</span>
           </h2>
           <p>
             Sellonit is developing analytics to help businesses understand their sales activity, products, orders, and operations. The dashboard below uses clearly marked demonstration figures.
@@ -67,7 +64,6 @@ export default function BusinessAnalyticsSection() {
                   <small>Illustrative workspace</small>
                 </span>
               </div>
-              <span className="analytics-live-label"><span /> DEMO DATA</span>
             </div>
 
             <div className="analytics-dashboard-content">
@@ -211,15 +207,7 @@ export default function BusinessAnalyticsSection() {
           </div>
         </div>
 
-        <div className="analytics-capability-grid">
-          {analyticsCapabilities.map(({ title, copy, icon: Icon }) => (
-            <article className="analytics-capability-card" key={title}>
-              <span className="analytics-capability-icon"><Icon size={18} aria-hidden="true" /></span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
-        </div>
+        
         <div className="analytics-product-note">
           <p>Metric availability will depend on business role and available data. Definitions must remain consistent: a placed order is not the same as a completed sale, and gross order value is not the same as money received after refunds, fees, and adjustments.</p>
           <Link href="/analytics">Explore Business Analytics <ArrowUpRight size={15} aria-hidden="true" /></Link>
