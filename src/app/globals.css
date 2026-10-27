@@ -143,27 +143,15 @@ img {
   gap: 8px;
 }
 
-.brand-mark {
-  display: grid;
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
-  place-items: center;
-  border-radius: 12px;
-  background: var(--orange);
-  color: var(--paper);
+.brand-logo {
+  display: block;
+  width: 140px;
+  height: auto;
+  flex: 0 0 auto;
 }
 
-.brand-wordmark {
-  color: var(--ink);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.055em;
-  line-height: 28px;
-}
-
-.brand-wordmark span {
-  color: var(--orange);
+.footer-brand-logo {
+  width: 144px;
 }
 
 .desktop-nav {
@@ -2612,9 +2600,16 @@ img {
 }
 
 .final-cta-copy,
-.signup-form-wrap {
+.final-cta-action {
   position: relative;
   z-index: 1;
+}
+
+.final-cta-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .final-cta-copy {
@@ -2645,48 +2640,6 @@ img {
   text-wrap: pretty;
 }
 
-.signup-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.signup-form input {
-  min-width: 180px;
-  min-height: 52px;
-  flex: 1 1 190px;
-  padding: 12px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.23);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--paper);
-  font-size: 16px;
-  line-height: 24px;
-  transition:
-    border-color 300ms var(--ease-out),
-    background-color 300ms var(--ease-out),
-    box-shadow 300ms var(--ease-out);
-}
-
-.signup-form input::placeholder {
-  color: rgba(255, 255, 255, 0.56);
-}
-
-.signup-form input:hover {
-  border-color: rgba(255, 255, 255, 0.43);
-}
-
-.signup-form input:focus-visible {
-  border-color: var(--orange);
-  background: rgba(255, 255, 255, 0.12);
-  outline: 3px solid rgba(255, 139, 0, 0.28);
-  outline-offset: 2px;
-}
-
-.signup-form input[aria-invalid="true"] {
-  border-color: var(--orange);
-}
-
 .signup-submit {
   min-height: 52px;
   flex: 0 0 auto;
@@ -2694,22 +2647,12 @@ img {
   white-space: nowrap;
 }
 
-.signup-help,
-.signup-feedback {
+.signup-help {
   min-height: 16px;
-  margin: 8px 0 0;
+  margin: 0;
   color: rgba(255, 255, 255, 0.62);
   font-size: 12px;
   line-height: 16px;
-}
-
-.signup-feedback {
-  min-height: 0;
-  color: var(--orange);
-}
-
-.signup-feedback.is-error {
-  color: var(--orange);
 }
 
 /* Footer */
@@ -3284,15 +3227,12 @@ img {
     border-radius: 12px;
   }
 
-  .brand-mark {
-    width: 36px;
-    height: 36px;
-    flex-basis: 36px;
-    border-radius: 12px;
+  .header-shell .brand-logo {
+    width: 120px;
   }
 
-  .brand-wordmark {
-    font-size: 20px;
+  .mobile-menu .brand-logo {
+    width: 132px;
   }
 
   .mobile-menu {
@@ -3852,17 +3792,9 @@ img {
     line-height: 20px;
   }
 
-  .signup-form {
-    flex-direction: column;
-  }
-
-  .signup-form input,
   .signup-submit {
     width: 100%;
     min-height: 48px;
-  }
-
-  .signup-submit {
     justify-content: center;
   }
 
@@ -3931,6 +3863,10 @@ img {
 @media (max-width: 380px) {
   .header-cta {
     display: none;
+  }
+
+  .header-shell .brand-logo {
+    width: 110px;
   }
 
   .hero-actions {
