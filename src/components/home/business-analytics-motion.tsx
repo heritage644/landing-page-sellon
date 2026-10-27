@@ -23,13 +23,13 @@ export default function BusinessAnalyticsMotion() {
         if (dashboard) {
           gsap.fromTo(
             dashboard,
-            { opacity: 0, y: 24, scale: 0.985, filter: "blur(5px)" },
+            { opacity: 0, y: 38, scale: 0.96, filter: "blur(8px)" },
             {
               opacity: 1,
               y: 0,
               scale: 1,
               filter: "blur(0px)",
-              duration: 0.82,
+              duration: 1.02,
               ease: "power3.out",
               scrollTrigger: {
                 trigger: dashboard,
@@ -46,9 +46,9 @@ export default function BusinessAnalyticsMotion() {
             { scaleY: 0, transformOrigin: "center bottom" },
             {
               scaleY: 1,
-              duration: 0.82,
-              stagger: 0.075,
-              ease: "back.out(1.25)",
+              duration: 0.96,
+              stagger: 0.1,
+              ease: "back.out(1.4)",
               scrollTrigger: {
                 trigger: stage,
                 start: "top 68%",
@@ -64,7 +64,7 @@ export default function BusinessAnalyticsMotion() {
             { strokeDasharray: "0 100" },
             {
               strokeDasharray: "78 22",
-              duration: 1.25,
+              duration: 1.5,
               ease: "power2.out",
               scrollTrigger: {
                 trigger: donut,
@@ -88,7 +88,7 @@ export default function BusinessAnalyticsMotion() {
 
             return gsap.to(state, {
               value: target,
-              duration: 1.45,
+              duration: 1.7,
               ease: "power2.out",
               paused: true,
               onUpdate: () => {
@@ -109,9 +109,9 @@ export default function BusinessAnalyticsMotion() {
         if (device) {
           gsap.fromTo(
             device,
-            { y: 20 },
+            { y: 34 },
             {
-              y: -20,
+              y: -34,
               ease: "none",
               scrollTrigger: {
                 trigger: stage,

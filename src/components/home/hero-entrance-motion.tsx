@@ -15,6 +15,7 @@ export default function HeroEntranceMotion() {
         const headerShell = header.querySelector<HTMLElement>(".header-shell");
         const logo = header.querySelector<HTMLElement>("[data-hero-logo]");
         const navItems = Array.from(header.querySelectorAll<HTMLElement>("[data-hero-nav-item]"));
+        const introLabel = main.querySelector<HTMLElement>(".hero-intro-label");
         const words = Array.from(main.querySelectorAll<HTMLElement>("[data-hero-word]"));
         const subtitle = main.querySelector<HTMLElement>(".hero-subtitle");
         const actions = main.querySelector<HTMLElement>(".hero-actions");
@@ -26,7 +27,7 @@ export default function HeroEntranceMotion() {
         if (headerShell) {
           timeline.fromTo(
             headerShell,
-            { y: -14, opacity: 0, filter: "blur(6px)" },
+            { y: -20, opacity: 0, filter: "blur(8px)" },
             { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.64, ease: "back.out(1.25)" },
             0,
           );
@@ -57,6 +58,15 @@ export default function HeroEntranceMotion() {
           );
         }
 
+        if (introLabel) {
+          timeline.fromTo(
+            introLabel,
+            { y: 16, opacity: 0, filter: "blur(4px)" },
+            { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.56, ease: "power3.out" },
+            0.22,
+          );
+        }
+
         if (words.length) {
           gsap.set(words, { transformPerspective: 760, transformOrigin: "50% 100%" });
           timeline.fromTo(
@@ -81,13 +91,13 @@ export default function HeroEntranceMotion() {
         if (copyTargets.length) {
           timeline.fromTo(
             copyTargets,
-            { y: 14, opacity: 0, filter: "blur(4px)" },
+            { y: 24, opacity: 0, filter: "blur(7px)" },
             {
               y: 0,
               opacity: 1,
               filter: "blur(0px)",
-              duration: 0.58,
-              stagger: 0.1,
+              duration: 0.72,
+              stagger: 0.12,
               ease: "power3.out",
             },
             0.92,
@@ -97,13 +107,13 @@ export default function HeroEntranceMotion() {
         if (visual) {
           timeline.fromTo(
             visual,
-            { y: 22, opacity: 0, scale: 0.985, filter: "blur(5px)" },
+            { y: 34, opacity: 0, scale: 0.96, filter: "blur(7px)" },
             {
               y: 0,
               opacity: 1,
               scale: 1,
               filter: "blur(0px)",
-              duration: 0.8,
+              duration: 0.94,
               ease: "power3.out",
             },
             0.48,

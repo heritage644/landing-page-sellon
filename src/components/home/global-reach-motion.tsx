@@ -33,8 +33,8 @@ export default function GlobalReachMotion() {
         );
         const pinPulseTweens = pins.map((pin, index) =>
           gsap.to(pin, {
-            scale: 1.12,
-            duration: 1.7 + index * 0.08,
+            scale: 1.18,
+            duration: 1.9 + index * 0.1,
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut",
@@ -87,8 +87,8 @@ export default function GlobalReachMotion() {
         if (map) {
           reveal.fromTo(
             map,
-            { opacity: 0, y: 16, scale: 0.985, filter: "blur(4px)" },
-            { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.8, ease: "power3.out" },
+            { opacity: 0, y: 32, scale: 0.955, filter: "blur(7px)" },
+            { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.02, ease: "power3.out" },
             0,
           );
         }
@@ -96,8 +96,8 @@ export default function GlobalReachMotion() {
         if (pins.length) {
           reveal.fromTo(
             pins,
-            { opacity: 0, scale: 0, y: 5 },
-            { opacity: 1, scale: 1, y: 0, duration: 0.5, stagger: 0.075, ease: "back.out(1.8)" },
+            { opacity: 0, scale: 0, y: 10, rotate: -12 },
+            { opacity: 1, scale: 1, y: 0, rotate: 0, duration: 0.64, stagger: 0.1, ease: "back.out(2)" },
             0.22,
           );
         }
@@ -105,15 +105,15 @@ export default function GlobalReachMotion() {
         if (badges.length) {
           reveal.fromTo(
             badges,
-            { opacity: 0, y: 18, scale: 0.94, rotateX: -12, filter: "blur(4px)" },
+            { opacity: 0, y: 28, scale: 0.88, rotateX: -18, filter: "blur(7px)" },
             {
               opacity: 1,
               y: 0,
               scale: 1,
               rotateX: 0,
               filter: "blur(0px)",
-              duration: 0.68,
-              stagger: 0.09,
+              duration: 0.82,
+              stagger: 0.13,
               ease: "back.out(1.45)",
             },
             0.34,
