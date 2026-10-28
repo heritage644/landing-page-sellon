@@ -101,15 +101,20 @@ export function AudienceSpotlight({ audience, id }: { audience: Audience; id: st
 export function EnterpriseSpotlight() {
   return (
     <section className="enterprise-spotlight section-space relative isolate overflow-visible bg-transparent" id="for-enterprise" aria-labelledby="enterprise-spotlight-title">
-      <div className="page-container enterprise-spotlight-layout relative z-[2]">
-        <div className="enterprise-spotlight-copy [--muted:#263d54]" data-reveal>
+      <div
+        className="page-container enterprise-spotlight-layout relative z-[2]"
+        role="region"
+        aria-labelledby="enterprise-spotlight-title"
+        tabIndex={0}
+      >
+        <div className="enterprise-spotlight-copy [--muted:#263d54]">
           <h2 className="[--ink:#172019]" id="enterprise-spotlight-title">One business may have several sides to manage.</h2>
           <p>Sellonit’s enterprise direction is designed for businesses that supply retailers, sell directly to customers, or operate through multiple teams and business units.</p>
           <p>Supplier, retail, and business-management capabilities are being developed within a shared structure, with access designed to follow each user’s role and permissions.</p>
           <Link className="button button-secondary" href="/enterprise">Explore Enterprise <ArrowRight size={16} aria-hidden="true" /></Link>
           <span className="product-roadmap-note">Plan limits, features, and pricing will be confirmed before publication.</span>
         </div>
-        <div className="enterprise-spotlight-visual" data-reveal>
+        <div className="enterprise-spotlight-visual">
           <BusinessAccessPreview />
         </div>
       </div>

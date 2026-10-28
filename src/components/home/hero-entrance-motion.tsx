@@ -1,13 +1,31 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+const releaseHeroPending = () => {
+  if (typeof document !== "undefined") {
+    document.documentElement.removeAttribute("data-hero-pending");
+  }
+};
+
 export default function HeroEntranceMotion() {
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      releaseHeroPending();
+    } else {
+      document.documentElement.setAttribute("data-hero-pending", "");
+    }
+
     const header = document.querySelector<HTMLElement>("[data-hero-header]");
     const main = document.getElementById("main");
-    if (!header || !main) return;
+    if (!header || !main) {
+      releaseHeroPending();
+      return;
+    }
 
     const motion = gsap.matchMedia();
     motion.add("(prefers-reduced-motion: no-preference)", () => {
@@ -121,10 +139,19 @@ export default function HeroEntranceMotion() {
         }
       }, document.body);
 
+      // fromTo renders the initial animation states before removing the pre-paint guard.
+      releaseHeroPending();
       return () => context.revert();
     });
 
-    return () => motion.revert();
+    motion.add("(prefers-reduced-motion: reduce)", () => {
+      releaseHeroPending();
+    });
+
+    return () => {
+      motion.revert();
+      releaseHeroPending();
+    };
   }, []);
 
   return null;

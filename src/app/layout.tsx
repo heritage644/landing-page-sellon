@@ -57,7 +57,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${baloo2.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${baloo2.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  if (window.location.pathname !== "/") return;
+                  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+                  document.documentElement.setAttribute("data-hero-pending", "");
+                  window.setTimeout(function () {
+                    document.documentElement.removeAttribute("data-hero-pending");
+                  }, 4000);
+                } catch (error) {
+                  document.documentElement.removeAttribute("data-hero-pending");
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>
         <MotionController />
         {children}
