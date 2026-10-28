@@ -23,7 +23,7 @@ export default function HeroStorefrontPreview() {
           <span className="browser-dot" />
           <span className="browser-dot" />
           <span className="browser-dot" />
-          <div className="store-address"><LockKey size={12} aria-hidden="true" /> sample storefront · concept</div>
+          <div className="store-address"><LockKey size={12} aria-hidden="true" /> sample storefront </div>
         </div>
         <div className="storefront-page">
           <div className="storefront-nav">

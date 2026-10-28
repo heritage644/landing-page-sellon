@@ -7,7 +7,7 @@ export default function ProblemSection() {
     <section className="problem-section section-space bg-[#3fbfff] text-[#172a45] dark:bg-[#153a4f] dark:text-[#f2f6fb]" id="the-problem" aria-labelledby="problem-title">
       <div className="page-container">
         <div className="problem-intro" data-reveal>
-          <h2 className="[--ink:#172a45] dark:[--ink:#f2f6fb]" id="problem-title">Running a business involves more than making sales <span className="text-[#ff8b00]">.</span></h2>
+          <h2 className="[--ink:#172a45] dark:[--ink:#f2f6fb]" id="problem-title">Running a business involves <span className="text-[#ff8b00]">MORE THAN</span> making sales <span className="text-[#ff8b00]">.</span></h2>
           <p className="[--muted:#2c4560] dark:[--muted:#d3deea]">
             Many Nigerian businesses sell through WhatsApp, Instagram, referrals, and physical shops. As the business grows, keeping everything organised can become harder.
           </p>
@@ -33,7 +33,7 @@ export default function ProblemSection() {
 
           <div className="problem-copy-block [--muted:#2c4560] dark:[--muted:#d3deea]">
             <p>Products sit in chat messages. Customers ask for prices repeatedly. Orders arrive through different channels, and sellers have to keep track of what has been sold and what remains available.</p>
-            <p>When retailers depend on suppliers, there is another challenge: finding the right products, understanding the selling price, and managing customer orders.</p>
+           
             <p className="problem-emphasis">Sellonit is being built to help businesses bring these parts of selling into one place.</p>
             <Link href="/how-it-works" className="text-link">See how Sellonit fits together <ArrowRight size={17} aria-hidden="true" /></Link>
           </div>
